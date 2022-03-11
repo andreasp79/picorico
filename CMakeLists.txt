@@ -3,9 +3,51 @@ cmake_minimum_required(VERSION 3.12)
 # Set your project name here
 set(PROJECT_NAME my_project)
 
+include_directories(./include)
+
 # Set your project sources here
 set(PROJECT_SOURCES
     main.cpp
+    src/control.c
+    src/dat_ents.c
+    src/dat_maps.c
+    src/dat_picsPC.c
+    src/dat_picsST.c
+    src/dat_screens.c
+    src/dat_spritesPC.c
+    src/dat_spritesST.c
+    src/dat_tilesPC.c
+    src/dat_tilesST.c
+    src/devtools.c
+    src/draw.c
+    src/e_bomb.c
+    src/e_bonus.c
+    src/e_box.c
+    src/e_bullet.c
+    src/e_rick.c
+    src/e_sbonus.c
+    src/e_them.c
+    src/ents.c
+    src/game.c
+    src/img_icon.e
+    src/img_splash.e
+    src/maps.c
+    src/rects.c
+    src/scr_gameover.c
+    src/scr_getname.c
+    src/scr_imain.c
+    src/scr_pause.c
+    src/scr_xrick.c
+    src/scroller.c
+    src/sdlcodes.e
+    src/sysarg.c
+    src/sysevt.c
+    src/sysjoy.c
+    src/syskbd.c
+    src/system.c
+    src/sysvid.c
+    src/util.c
+    src/xrick.c
 )
 
 # --- Here Be Boilerplate ---
