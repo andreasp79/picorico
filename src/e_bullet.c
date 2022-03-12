@@ -33,7 +33,7 @@ e_bullet_init(U16 x, U16 y)
   E_BULLET_ENT.n = 0x02;
   E_BULLET_ENT.x = x;
   E_BULLET_ENT.y = y + 0x0006;
-  if (game_dir == LEFT) {
+  if (game_dir == GAME_LEFT) {
     e_bullet_offsx = -0x08;
     E_BULLET_ENT.sprite = 0x21;
   }

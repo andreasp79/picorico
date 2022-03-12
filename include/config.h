@@ -28,7 +28,7 @@
 #undef ENABLE_SOUND
 
 /* cheats support */
-#define ENABLE_CHEATS
+#undef ENABLE_CHEATS
 
 /* auto-defocus support */
 /* does seem to cause all sorts of problems on BeOS, Windows... */

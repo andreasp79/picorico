@@ -21,8 +21,8 @@
 
 #include "rects.h"
 
-#define LEFT 1
-#define RIGHT 0
+#define GAME_LEFT 1
+#define GAME_RIGHT 0
 
 #define TRUE 1
 #define FALSE 0
@@ -48,7 +48,7 @@ extern hscore_t game_hscores[8];  /* highest scores (hall of fame) */
 extern U16 game_map;       /* current map */
 extern U16 game_submap;    /* current submap */
 
-extern U8 game_dir;        /* direction (LEFT, RIGHT) */
+extern U8 game_dir;        /* direction (GAME_LEFT, GAME_RIGHT) */
 extern U8 game_chsm;       /* change submap request (TRUE, FALSE) */
 
 extern U8 game_waitevt;    /* wait for events (TRUE, FALSE) */

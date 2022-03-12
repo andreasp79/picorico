@@ -7,7 +7,7 @@ include_directories(./include)
 
 # Set your project sources here
 set(PROJECT_SOURCES
-    main.cpp
+    src/main.cpp
     src/control.c
     src/dat_ents.c
     src/dat_maps.c
@@ -40,14 +40,14 @@ set(PROJECT_SOURCES
     src/scr_xrick.c
     src/scroller.c
     src/sdlcodes.e
-    src/sysarg.c
-    src/sysevt.c
-    src/sysjoy.c
-    src/syskbd.c
-    src/system.c
-    src/sysvid.c
+    #src/sysarg.c
+    src/sysevt.cpp
+    #src/sysjoy.c
+    #src/syskbd.c
+    src/system.cpp
+    #src/sysvid.c
     src/util.c
-    src/xrick.c
+    #src/xrick.c
 )
 
 # --- Here Be Boilerplate ---
@@ -80,7 +80,7 @@ picosystem_executable(
 # --- End Of Boilerplate ---
 
 # Set your build options here
-pixel_double(${PROJECT_NAME})          # 120x120 resolution game, pixel-doubled to 240x240
+#pixel_double(${PROJECT_NAME})          # 120x120 resolution game, pixel-doubled to 240x240
 disable_startup_logo(${PROJECT_NAME})  # Skip the PicoSystem splash
 #no_font(${PROJECT_NAME})              # Omit the default font
 #no_spritesheet(${PROJECT_NAME})       # Omit the default spritesheet

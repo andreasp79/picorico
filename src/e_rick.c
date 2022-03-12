@@ -210,7 +210,7 @@ e_rick_action2(void)
 	}
 	if (control_status & CONTROL_LEFT) {  /* move left */
 		x = E_RICK_ENT.x - 2;
-		game_dir = LEFT;
+		game_dir = GAME_LEFT;
 		if (x < 0) {  /* prev submap */
 			game_chsm = TRUE;
 			E_RICK_ENT.x = 0xe2;
@@ -218,7 +218,7 @@ e_rick_action2(void)
 		}
 	} else {  /* move right */
 		x = E_RICK_ENT.x + 2;
-		game_dir = RIGHT;
+		game_dir = GAME_RIGHT;
 		if (x >= 0xe8) {  /* next submap */
 			game_chsm = TRUE;
 			E_RICK_ENT.x = 0x04;
@@ -277,10 +277,10 @@ e_rick_action2(void)
 	if (control_status & (CONTROL_LEFT|CONTROL_RIGHT)) {  /* stop */
 		if (control_status & CONTROL_RIGHT)
 		{
-			game_dir = RIGHT;
+			game_dir = GAME_RIGHT;
 			e_rick_stop_x = E_RICK_ENT.x + 0x17;
 		} else {
-			game_dir = LEFT;
+			game_dir = GAME_LEFT;
 			e_rick_stop_x = E_RICK_ENT.x;
 		}
 		e_rick_stop_y = E_RICK_ENT.y + 0x000E;

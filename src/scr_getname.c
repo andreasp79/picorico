@@ -190,7 +190,7 @@ screen_getname(void)
       sys_sleep(50);
     break;
 
-  case 6:  /* wait for LEFT released */
+  case 6:  /* wait for GAME_LEFT released */
     if (!(control_status & CONTROL_LEFT) ||
 	sys_gettime() - tm > AUTOREPEAT_TMOUT)
       seq = 2;
@@ -198,7 +198,7 @@ screen_getname(void)
       sys_sleep(50);
     break;
 
-  case 7:  /* wait for RIGHT released */
+  case 7:  /* wait for GAME_RIGHT released */
     if (!(control_status & CONTROL_RIGHT) ||
 	sys_gettime() - tm > AUTOREPEAT_TMOUT)
       seq = 2;

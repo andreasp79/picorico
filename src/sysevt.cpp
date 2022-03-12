@@ -16,7 +16,11 @@
  *          requires that SHIFT be pressed to input numbers.
  */
 
-#include <SDL.h>
+//#include <SDL.h>
+#include "picosystem.hpp"
+
+extern "C"
+{
 
 #include "system.h"
 #include "config.h"
@@ -26,60 +30,89 @@
 #include "control.h"
 #include "draw.h"
 
+
+
 #define SYSJOY_RANGE 3280
 
 #define SETBIT(x,b) x |= (b)
 #define CLRBIT(x,b) x &= ~(b)
 
-static SDL_Event event;
+//static SDL_Event event;
 
-/*
- * Process an event
- */
-static void
-processEvent()
+bool ButtonStates[8] = {0,0,0,0,0,0,0,0};
+
+static int processEvents()
 {
-	U16 key;
+  bool NewButtonStates[8] ;
+  NewButtonStates[0] = picosystem::button(picosystem::UP);
+  NewButtonStates[1] = picosystem::button(picosystem::DOWN);
+  NewButtonStates[2] = picosystem::button(picosystem::LEFT);
+  NewButtonStates[3] = picosystem::button(picosystem::RIGHT);
+
+  NewButtonStates[4] = picosystem::button(picosystem::A);
+  NewButtonStates[5] = picosystem::button(picosystem::B);
+  NewButtonStates[6] = picosystem::button(picosystem::X);
+  NewButtonStates[7] = picosystem::button(picosystem::Y);
+
+  bool KeyUpWentDown = NewButtonStates[0] && !ButtonStates[0];
+  bool KeyDownWentDown = NewButtonStates[1] && !ButtonStates[1];
+  bool KeyLeftWentDown = NewButtonStates[2] && !ButtonStates[2];
+  bool KeyRightWentDown = NewButtonStates[3] && !ButtonStates[3];
+
+  bool KeyAWentDown = NewButtonStates[4] && !ButtonStates[4];
+  bool KeyBpWentDown = NewButtonStates[5] && !ButtonStates[5];
+  bool KeyXpWentDown = NewButtonStates[6] && !ButtonStates[6];
+  bool KeyYWentDown = NewButtonStates[7] && !ButtonStates[7];
+
+  bool KeyUpWentUp = !NewButtonStates[0] && ButtonStates[0];
+  bool KeyDownWentUp = !NewButtonStates[1] && ButtonStates[1];
+  bool KeyLeftWentUp = !NewButtonStates[2] && ButtonStates[2];
+  bool KeyRightWentUp = !NewButtonStates[3] && ButtonStates[3];
+
+  bool KeyAWentUp = !NewButtonStates[4] && ButtonStates[4];
+  bool KeyBpWentUp = !NewButtonStates[5] && ButtonStates[5];
+  bool KeyXpWentUp = !NewButtonStates[6] && ButtonStates[6];
+  bool KeyYWentUp = !NewButtonStates[7] && ButtonStates[7];
+
+
 #ifdef ENABLE_FOCUS
 	SDL_ActiveEvent *aevent;
 #endif
 
-  switch (event.type) {
-  case SDL_KEYDOWN:
-    key = event.key.keysym.sym;
-    if (key == syskbd_up || key == SDLK_UP) {
+  //case SDL_KEYDOWN:
+  if (KeyUpWentDown) {
       SETBIT(control_status, CONTROL_UP);
       control_last = CONTROL_UP;
     }
-    else if (key == syskbd_down || key == SDLK_DOWN) {
+    else if (KeyDownWentDown) {
       SETBIT(control_status, CONTROL_DOWN);
       control_last = CONTROL_DOWN;
     }
-    else if (key == syskbd_left || key == SDLK_LEFT) {
+    else if (KeyLeftWentDown) {
       SETBIT(control_status, CONTROL_LEFT);
       control_last = CONTROL_LEFT;
     }
-    else if (key == syskbd_right || key == SDLK_RIGHT) {
+    else if (KeyRightWentDown) {
       SETBIT(control_status, CONTROL_RIGHT);
       control_last = CONTROL_RIGHT;
     }
-    else if (key == syskbd_pause) {
+    else if (KeyXpWentDown) {
       SETBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
-    else if (key == syskbd_end) {
+    else if (KeyYWentDown) {
       SETBIT(control_status, CONTROL_END);
       control_last = CONTROL_END;
     }
-    else if (key == syskbd_xtra) {
+    else if (KeyAWentDown) {
       SETBIT(control_status, CONTROL_EXIT);
       control_last = CONTROL_EXIT;
     }
-    else if (key == syskbd_fire) {
+    else if (KeyBpWentDown) {
       SETBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }
-    else if (key == SDLK_F1) {
+   /* else if (key == SDLK_F1) {
       sysvid_toggleFullscreen();
     }
     else if (key == SDLK_F2) {
@@ -87,7 +120,7 @@ processEvent()
     }
     else if (key == SDLK_F3) {
       sysvid_zoom(+1);
-    }
+    }*/
 #ifdef ENABLE_SOUND
     else if (key == SDLK_F4) {
       syssnd_toggleMute();
@@ -110,47 +143,47 @@ processEvent()
       game_toggleCheat(3);
     }
 #endif
-    break;
-  case SDL_KEYUP:
-    key = event.key.keysym.sym;
-    if (key == syskbd_up || key == SDLK_UP) {
+  //  break;
+  //case SDL_KEYUP:
+    //key = event.key.keysym.sym;
+    if (KeyUpWentUp) {
       CLRBIT(control_status, CONTROL_UP);
       control_last = CONTROL_UP;
     }
-    else if (key == syskbd_down || key == SDLK_DOWN) {
+    else if (KeyDownWentUp) {
       CLRBIT(control_status, CONTROL_DOWN);
       control_last = CONTROL_DOWN;
     }
-    else if (key == syskbd_left || key == SDLK_LEFT) {
+    else if (KeyLeftWentUp) {
       CLRBIT(control_status, CONTROL_LEFT);
       control_last = CONTROL_LEFT;
     }
-    else if (key == syskbd_right || key == SDLK_RIGHT) {
+    else if (KeyRightWentUp) {
       CLRBIT(control_status, CONTROL_RIGHT);
       control_last = CONTROL_RIGHT;
     }
-    else if (key == syskbd_pause) {
+    else if (KeyXpWentUp) {
       CLRBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
-    else if (key == syskbd_end) {
+    else if (KeyYWentUp) {
       CLRBIT(control_status, CONTROL_END);
       control_last = CONTROL_END;
     }
-    else if (key == syskbd_xtra) {
+    else if (KeyAWentUp) {
       CLRBIT(control_status, CONTROL_EXIT);
       control_last = CONTROL_EXIT;
     }
-    else if (key == syskbd_fire) {
+    else if (KeyBpWentUp) {
       CLRBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }
-    break;
-  case SDL_QUIT:
-    /* player tries to close the window -- this is the same as pressing ESC */
+   // break;
+  /*case SDL_QUIT:
+    // player tries to close the window -- this is the same as pressing ESC 
     SETBIT(control_status, CONTROL_EXIT);
     control_last = CONTROL_EXIT;
-    break;
+    break;*/
 #ifdef ENABLE_FOCUS
   case SDL_ACTIVEEVENT: {
     aevent = (SDL_ActiveEvent *)&event;
@@ -203,9 +236,17 @@ processEvent()
     CLRBIT(control_status, CONTROL_FIRE);
     break;
 #endif
-  default:
-    break;
+
+
+  for (int i = 0; i < 8; ++i)
+  {
+    ButtonStates[i] = NewButtonStates[i];
   }
+
+  return (KeyAWentDown || KeyBpWentDown || KeyXpWentDown || KeyYWentDown || KeyUpWentDown || KeyDownWentDown || KeyLeftWentDown || KeyRightWentDown || 
+          KeyAWentUp   || KeyBpWentUp   || KeyXpWentUp   || KeyYWentUp   || KeyUpWentUp ||   KeyDownWentUp   || KeyLeftWentUp   || KeyRightWentUp
+        ) ? 1 : 0;
+
 }
 
 /*
@@ -214,8 +255,9 @@ processEvent()
 void
 sysevt_poll(void)
 {
-  while (SDL_PollEvent(&event))
-    processEvent();
+  //while (SDL_PollEvent(&event))
+    
+  processEvents();
 }
 
 /*
@@ -224,10 +266,12 @@ sysevt_poll(void)
 void
 sysevt_wait(void)
 {
-  SDL_WaitEvent(&event);
-  processEvent();
+  // SDL_WaitEvent(&event);
+  while (processEvents() == 0)
+    ;
 }
 
+}
 /* eof */
 
 

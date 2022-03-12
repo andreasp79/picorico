@@ -587,7 +587,7 @@ init(void)
     i = 0;
     while (i < MAP_NBR_CONNECT &&
 	   (map_connect[i].submap != game_submap ||
-	    map_connect[i].dir != RIGHT))
+	    map_connect[i].dir != GAME_RIGHT))
       i++;
     map_frow = map_connect[i].rowin - 0x10;
     ent_ents[1].y = 0x10 << 3;

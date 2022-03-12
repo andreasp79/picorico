@@ -14,6 +14,13 @@
 #ifndef _SYSTEM_H
 #define _SYSTEM_H
 
+#ifdef __cplusplus__
+extern "C"
+{
+#endif
+
+//#include "picosystem.hpp"
+
 #include "config.h"
 
 /*
@@ -68,9 +75,10 @@ typedef signed int S32;           /* 32 bits signed   */
  */
 extern void sys_init(int, char **);
 extern void sys_shutdown(void);
-extern void sys_panic(char *, ...);
-extern void sys_printf(char *, ...);
+extern void sys_panic(char *);
+extern void sys_printf(char *);
 extern U32 sys_gettime(void);
+
 extern void sys_sleep(int);
 
 /*
@@ -159,6 +167,9 @@ extern void sysjoy_init(void);
 extern void sysjoy_shutdown(void);
 #endif
 
+#ifdef __cplusplus__
+}
+#endif
 
 #endif
 

@@ -151,7 +151,7 @@ map_chain(void)
   IFDEBUG_MAPS(
     sys_printf("xrick/maps: chain submap=%#04x frow=%#04x .connect=%#04x %s\n",
 	       game_submap, map_frow, c,
-	       (game_dir == LEFT ? "-> left" : "-> right"));
+	       (game_dir == GAME_LEFT ? "-> left" : "-> right"));
   );
 
   /*

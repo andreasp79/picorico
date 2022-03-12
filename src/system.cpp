@@ -11,13 +11,18 @@
  * You must not remove this notice, or any other, from this software.
  */
 
-#include <SDL.h>
+//#include <SDL.h>
 
-#include <stdarg.h>   /* args for sys_panic */
-#include <fcntl.h>    /* fcntl in sys_panic */
-#include <stdio.h>    /* printf */
-#include <stdlib.h>
-#include <signal.h>
+//#include <stdarg.h>   /* args for sys_panic */
+//#include <fcntl.h>    /* fcntl in sys_panic */
+//#include <stdio.h>    /* printf */
+//#include <stdlib.h>
+//#include <signal.h>
+
+#include "picosystem.hpp"
+
+extern "C"
+{
 
 #include "system.h"
 
@@ -25,8 +30,9 @@
  * Panic
  */
 void
-sys_panic(char *err, ...)
+sys_panic(char *err)
 {
+  #if 0
   va_list argptr;
   char s[1024];
 
@@ -42,6 +48,8 @@ sys_panic(char *err, ...)
 
   /* print message and die */
   printf("%s\npanic!\n", s);
+  #endif
+  
   exit(1);
 }
 
@@ -50,8 +58,9 @@ sys_panic(char *err, ...)
  * Print a message
  */
 void
-sys_printf(char *msg, ...)
+sys_printf(char *msg)
 {
+  #if 0
   va_list argptr;
   char s[1024];
 
@@ -65,6 +74,7 @@ sys_printf(char *msg, ...)
   vsprintf(s, msg, argptr);
   va_end(argptr);
   printf(s);
+  #endif
 }
 
 /*
@@ -76,7 +86,7 @@ sys_gettime(void)
   static U32 ticks_base = 0;
   U32 ticks;
 
-  ticks = SDL_GetTicks();
+  ticks = picosystem::time();
 
   if (!ticks_base)
     ticks_base = ticks;
@@ -90,7 +100,7 @@ sys_gettime(void)
 void
 sys_sleep(int s)
 {
-  SDL_Delay(s);
+  picosystem::sleep(s);
 }
 
 /*
@@ -108,9 +118,9 @@ sys_init(int argc, char **argv)
 	if (sysarg_args_nosound == 0)
 		syssnd_init();
 #endif
-	atexit(sys_shutdown);
-	signal(SIGINT, exit);
-	signal(SIGTERM, exit);
+	//atexit(sys_shutdown);
+	//signal(SIGINT, exit);
+	//signal(SIGTERM, exit);
 }
 
 /*
@@ -129,3 +139,5 @@ sys_shutdown(void)
 }
 
 /* eof */
+
+}
