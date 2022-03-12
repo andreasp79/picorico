@@ -14,6 +14,11 @@
 #ifndef _SCREENS_H
 #define _SCREENS_H
 
+#ifdef __cplusplus__
+exter "C" {
+#endif
+
+
 #include "system.h"
 
 #define SCREEN_TIMEOUT 4000
@@ -44,6 +49,11 @@ extern U8 screen_introMap(void);  /* map intro */
 extern U8 screen_gameover(void);  /* gameover */
 extern U8 screen_getname(void);  /* enter you name */
 extern void screen_pause(U8);  /* pause indicator */
+
+#ifdef __cplusplus__
+}
+#endif
+
 
 #endif
 

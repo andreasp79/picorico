@@ -2403,6 +2403,33 @@ src/scr_imain.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imain.c.s
 .PHONY : src/scr_imain.c.s
 
+src/scr_imap.obj: src/scr_imap.c.obj
+
+.PHONY : src/scr_imap.obj
+
+# target to build an object file
+src/scr_imap.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imap.c.obj
+.PHONY : src/scr_imap.c.obj
+
+src/scr_imap.i: src/scr_imap.c.i
+
+.PHONY : src/scr_imap.i
+
+# target to preprocess a source file
+src/scr_imap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imap.c.i
+.PHONY : src/scr_imap.c.i
+
+src/scr_imap.s: src/scr_imap.c.s
+
+.PHONY : src/scr_imap.s
+
+# target to generate assembly for a file
+src/scr_imap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imap.c.s
+.PHONY : src/scr_imap.c.s
+
 src/scr_pause.obj: src/scr_pause.c.obj
 
 .PHONY : src/scr_pause.obj
@@ -2484,6 +2511,33 @@ src/scroller.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scroller.c.s
 .PHONY : src/scroller.c.s
 
+src/sysarg.obj: src/sysarg.c.obj
+
+.PHONY : src/sysarg.obj
+
+# target to build an object file
+src/sysarg.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysarg.c.obj
+.PHONY : src/sysarg.c.obj
+
+src/sysarg.i: src/sysarg.c.i
+
+.PHONY : src/sysarg.i
+
+# target to preprocess a source file
+src/sysarg.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysarg.c.i
+.PHONY : src/sysarg.c.i
+
+src/sysarg.s: src/sysarg.c.s
+
+.PHONY : src/sysarg.s
+
+# target to generate assembly for a file
+src/sysarg.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysarg.c.s
+.PHONY : src/sysarg.c.s
+
 src/sysevt.obj: src/sysevt.cpp.obj
 
 .PHONY : src/sysevt.obj
@@ -2510,6 +2564,60 @@ src/sysevt.s: src/sysevt.cpp.s
 src/sysevt.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysevt.cpp.s
 .PHONY : src/sysevt.cpp.s
+
+src/sysjoy.obj: src/sysjoy.c.obj
+
+.PHONY : src/sysjoy.obj
+
+# target to build an object file
+src/sysjoy.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysjoy.c.obj
+.PHONY : src/sysjoy.c.obj
+
+src/sysjoy.i: src/sysjoy.c.i
+
+.PHONY : src/sysjoy.i
+
+# target to preprocess a source file
+src/sysjoy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysjoy.c.i
+.PHONY : src/sysjoy.c.i
+
+src/sysjoy.s: src/sysjoy.c.s
+
+.PHONY : src/sysjoy.s
+
+# target to generate assembly for a file
+src/sysjoy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysjoy.c.s
+.PHONY : src/sysjoy.c.s
+
+src/syskbd.obj: src/syskbd.c.obj
+
+.PHONY : src/syskbd.obj
+
+# target to build an object file
+src/syskbd.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/syskbd.c.obj
+.PHONY : src/syskbd.c.obj
+
+src/syskbd.i: src/syskbd.c.i
+
+.PHONY : src/syskbd.i
+
+# target to preprocess a source file
+src/syskbd.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/syskbd.c.i
+.PHONY : src/syskbd.c.i
+
+src/syskbd.s: src/syskbd.c.s
+
+.PHONY : src/syskbd.s
+
+# target to generate assembly for a file
+src/syskbd.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/syskbd.c.s
+.PHONY : src/syskbd.c.s
 
 src/system.obj: src/system.cpp.obj
 
@@ -2538,6 +2646,33 @@ src/system.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/system.cpp.s
 .PHONY : src/system.cpp.s
 
+src/sysvid.obj: src/sysvid.cpp.obj
+
+.PHONY : src/sysvid.obj
+
+# target to build an object file
+src/sysvid.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysvid.cpp.obj
+.PHONY : src/sysvid.cpp.obj
+
+src/sysvid.i: src/sysvid.cpp.i
+
+.PHONY : src/sysvid.i
+
+# target to preprocess a source file
+src/sysvid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysvid.cpp.i
+.PHONY : src/sysvid.cpp.i
+
+src/sysvid.s: src/sysvid.cpp.s
+
+.PHONY : src/sysvid.s
+
+# target to generate assembly for a file
+src/sysvid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysvid.cpp.s
+.PHONY : src/sysvid.cpp.s
+
 src/util.obj: src/util.c.obj
 
 .PHONY : src/util.obj
@@ -2564,6 +2699,33 @@ src/util.s: src/util.c.s
 src/util.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/util.c.s
 .PHONY : src/util.c.s
+
+src/xrick.obj: src/xrick.c.obj
+
+.PHONY : src/xrick.obj
+
+# target to build an object file
+src/xrick.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/xrick.c.obj
+.PHONY : src/xrick.c.obj
+
+src/xrick.i: src/xrick.c.i
+
+.PHONY : src/xrick.i
+
+# target to preprocess a source file
+src/xrick.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/xrick.c.i
+.PHONY : src/xrick.c.i
+
+src/xrick.s: src/xrick.c.s
+
+.PHONY : src/xrick.s
+
+# target to generate assembly for a file
+src/xrick.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/xrick.c.s
+.PHONY : src/xrick.c.s
 
 # Help Target
 help:
@@ -2821,6 +2983,9 @@ help:
 	@echo "... src/scr_imain.obj"
 	@echo "... src/scr_imain.i"
 	@echo "... src/scr_imain.s"
+	@echo "... src/scr_imap.obj"
+	@echo "... src/scr_imap.i"
+	@echo "... src/scr_imap.s"
 	@echo "... src/scr_pause.obj"
 	@echo "... src/scr_pause.i"
 	@echo "... src/scr_pause.s"
@@ -2830,15 +2995,30 @@ help:
 	@echo "... src/scroller.obj"
 	@echo "... src/scroller.i"
 	@echo "... src/scroller.s"
+	@echo "... src/sysarg.obj"
+	@echo "... src/sysarg.i"
+	@echo "... src/sysarg.s"
 	@echo "... src/sysevt.obj"
 	@echo "... src/sysevt.i"
 	@echo "... src/sysevt.s"
+	@echo "... src/sysjoy.obj"
+	@echo "... src/sysjoy.i"
+	@echo "... src/sysjoy.s"
+	@echo "... src/syskbd.obj"
+	@echo "... src/syskbd.i"
+	@echo "... src/syskbd.s"
 	@echo "... src/system.obj"
 	@echo "... src/system.i"
 	@echo "... src/system.s"
+	@echo "... src/sysvid.obj"
+	@echo "... src/sysvid.i"
+	@echo "... src/sysvid.s"
 	@echo "... src/util.obj"
 	@echo "... src/util.i"
 	@echo "... src/util.s"
+	@echo "... src/xrick.obj"
+	@echo "... src/xrick.i"
+	@echo "... src/xrick.s"
 .PHONY : help
 
 

@@ -37,9 +37,9 @@ typedef struct {
   int code;
 } sdlcodes_t;
 
-static sdlcodes_t sdlcodes[SDLK_LAST] = {
+/*static sdlcodes_t sdlcodes[SDLK_LAST] = {
 #include "sdlcodes.e"
-};
+};*/
 
 int sysarg_args_period = 0;
 int sysarg_args_map = 0;
@@ -64,6 +64,7 @@ sysarg_fail(char *msg)
 	exit(1);
 }
 
+#if 0
 /*
  * Get SDL key code
  */
@@ -85,6 +86,7 @@ sysarg_sdlcode(char *k)
 
   return result;
 }
+#endif
 
 /*
  * Scan key codes sequence
@@ -92,6 +94,7 @@ sysarg_sdlcode(char *k)
 int
 sysarg_scankeys(char *keys)
 {
+  #if 0
   char k[16];
   int i, j;
 
@@ -131,7 +134,7 @@ sysarg_scankeys(char *keys)
   k[j] = '\0';
   syskbd_fire = sysarg_sdlcode(k);
   if (!syskbd_fire) return -1;
-
+#endif
   return 0;
 }
 
@@ -139,8 +142,9 @@ sysarg_scankeys(char *keys)
  * Read and process arguments
  */
 void
-sysarg_init(int argc, char **argv)
+sysarg_init()
 {
+  /*
   int i;
 
   for (i = 1; i < argc; i++) {
@@ -210,7 +214,7 @@ sysarg_init(int argc, char **argv)
 
   }
 
-  /* this is dirty (sort of) */
+  //this is dirty (sort of)
   if (sysarg_args_submap > 0 && sysarg_args_submap < 9)
     sysarg_args_map = 0;
   if (sysarg_args_submap >= 9 && sysarg_args_submap < 20)
@@ -223,7 +227,7 @@ sysarg_init(int argc, char **argv)
       sysarg_args_submap == 20 ||
       sysarg_args_submap == 38)
     sysarg_args_submap = 0;
-
+*/
 }
 
 /* eof */

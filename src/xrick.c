@@ -14,20 +14,21 @@
 #include "system.h"
 #include "game.h"
 
-#include <SDL.h>
+//#include <SDL.h>
 
 /*
  * main
  */
+ /*
 int
-main(int argc, char *argv[])
+xrick_main()
 {
-	sys_init(argc, argv);
+	sys_init();
 
-	game_run();
-
+	//game_run();
+	g
 	sys_shutdown();
 	return 0;
 }
-
+*/
 /* eof */

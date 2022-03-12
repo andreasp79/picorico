@@ -11,9 +11,15 @@
  * You must not remove this notice, or any other, from this software.
  */
 
+#include "picosystem.hpp"
+#include <cstring>
+
+ extern "C"
+ {
+
 #include <stdlib.h> /* malloc */
 
-#include <SDL.h>
+//#include <SDL.h>
 
 #include "system.h"
 #include "game.h"
@@ -24,11 +30,46 @@
 #include <memory.h> /* memset */
 #endif
 
+typedef struct SDL_Color
+{
+    U8 r;
+    U8 g;
+    U8 b;
+    U8 a;
+} SDL_Color;
+
+typedef struct SDL_Rect
+{
+    U32 x;
+    U32 y;
+    U32 w;
+    U32 h;
+} SDL_Rect;
+
+
+/*
+typedef struct SDL_Surface{
+    int refcount;               //< Read-mostly
+} SDL_Surface;*/
+
+
+// picosystem::SCREEN is defined as: 
+// typedef uint16_t color_t;
+/*struct buffer_t {
+    int32_t w, h;
+    color_t *data;
+
+    color_t *p(int32_t x, int32_t y) {
+      return data + (x + y * w);
+    }
+  };*/
+
+
 U8 *sysvid_fb; /* frame buffer */
 rect_t SCREENRECT = {0, 0, SYSVID_WIDTH, SYSVID_HEIGHT, NULL}; /* whole fb */
 
-static SDL_Color palette[256];
-static SDL_Surface *screen;
+//static SDL_Color palette[256];
+//static SDL_Surface *screen;
 static U32 videoFlags;
 
 static U8 zoom = SYSVID_ZOOM; /* actual zoom level */
@@ -82,14 +123,15 @@ static U8 BLUE[] = { 0x00, 0x00, 0x68, 0x68,
  * Initialize screen
  */
 static
-SDL_Surface *initScreen(U16 w, U16 h, U8 bpp, U32 flags)
+void initScreen(U16 w, U16 h, U8 bpp, U32 flags)
 {
-  return SDL_SetVideoMode(w, h, bpp, flags);
+  //return SDL_SetVideoMode(w, h, bpp, flags);
 }
 
 void
 sysvid_setPalette(img_color_t *pal, U16 n)
 {
+  /*
   U16 i;
 
   for (i = 0; i < n; i++) {
@@ -97,18 +139,21 @@ sysvid_setPalette(img_color_t *pal, U16 n)
     palette[i].g = pal[i].g;
     palette[i].b = pal[i].b;
   }
-  SDL_SetColors(screen, (SDL_Color *)&palette, 0, n);
+  SDL_SetColors(screen, (SDL_Color *)&palette, 0, n);*/
 }
 
 void
 sysvid_restorePalette()
 {
+  /*
   SDL_SetColors(screen, (SDL_Color *)&palette, 0, 256);
+  */
 }
 
 void
 sysvid_setGamePalette()
 {
+  /*
   U8 i;
   img_color_t pal[256];
 
@@ -118,6 +163,7 @@ sysvid_setGamePalette()
     pal[i].b = BLUE[i];
   }
   sysvid_setPalette(pal, 32);
+  */
 }
 
 /*
@@ -126,6 +172,9 @@ sysvid_setGamePalette()
 void
 sysvid_chkvm(void)
 {
+  fszoom = 1;
+
+  /*
   SDL_Rect **modes;
   U8 i, mode = 0;
 
@@ -137,7 +186,7 @@ sysvid_chkvm(void)
     sys_panic("xrick/video: SDL can not find an appropriate video mode\n");
 
   if (modes == (SDL_Rect **)-1) {
-    /* can do what you want, everything is possible */
+    // can do what you want, everything is possible
     IFDEBUG_VIDEO(sys_printf("xrick/video: SDL says any video mode is OK\n"););
     fszoom = 1;
   }
@@ -163,7 +212,8 @@ sysvid_chkvm(void)
 	);
       fszoom = 1;
     }
-  }
+  }*/
+
 }
 
 /*
@@ -172,17 +222,22 @@ sysvid_chkvm(void)
 void
 sysvid_init(void)
 {
+  sysvid_fb = (U8*)malloc(SYSVID_WIDTH * SYSVID_HEIGHT);
+  if (!sysvid_fb)
+    sys_panic("xrick/video: sysvid_fb malloc failed\n");
+
+  #if 0
   SDL_Surface *s;
   U8 *mask, tpix;
   U32 len, i;
 
   IFDEBUG_VIDEO(printf("xrick/video: start\n"););
 
-  /* SDL */
+  // SDL
   if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_TIMER) < 0)
     sys_panic("xrick/video: could not init SDL\n");
 
-  /* various WM stuff */
+  // various WM stuff
   SDL_WM_SetCaption("xrick", "xrick");
   SDL_ShowCursor(SDL_DISABLE);
   s = SDL_CreateRGBSurfaceFrom(IMG_ICON->pixels, IMG_ICON->w, IMG_ICON->h, 8, IMG_ICON->w, 0xffffffff, 0xffffffff, 0xffffffff, 0xffffffff);
@@ -223,6 +278,8 @@ sysvid_init(void)
   /* video modes and screen */
   videoFlags = SDL_HWSURFACE|SDL_HWPALETTE;
   sysvid_chkvm();  /* check video modes */
+
+  /*
   if (sysarg_args_zoom)
     zoom = sysarg_args_zoom;
   if (sysarg_args_fullscreen) {
@@ -230,6 +287,10 @@ sysvid_init(void)
     szoom = zoom;
     zoom = fszoom;
   }
+  */
+
+  zoom = fszoom = 1;
+
   screen = initScreen(SYSVID_WIDTH * zoom,
 		      SYSVID_HEIGHT * zoom,
 		      8, videoFlags);
@@ -242,6 +303,7 @@ sysvid_init(void)
     sys_panic("xrick/video: sysvid_fb malloc failed\n");
 
   IFDEBUG_VIDEO(printf("xrick/video: ready\n"););
+  #endif
 }
 
 /*
@@ -253,7 +315,7 @@ sysvid_shutdown(void)
   free(sysvid_fb);
   sysvid_fb = NULL;
 
-  SDL_Quit();
+  //SDL_Quit();
 }
 
 /*
@@ -265,18 +327,19 @@ sysvid_update(rect_t *rects)
 {
   static SDL_Rect area;
   U16 x, y, xz, yz;
-  U8 *p, *q, *p0, *q0;
+  U8 *p, *p0; 
+  U16 *q, *q0;
 
   if (rects == NULL)
     return;
 
-  if (SDL_LockSurface(screen) == -1)
-    sys_panic("xrick/panic: SDL_LockSurface failed\n");
+  //if (SDL_LockSurface(screen) == -1)
+  //  sys_panic("xrick/panic: SDL_LockSurface failed\n");
 
   while (rects) {
     p0 = sysvid_fb;
     p0 += rects->x + rects->y * SYSVID_WIDTH;
-    q0 = (U8 *)screen->pixels;
+    q0 = (U16 *)picosystem::SCREEN->data;
     q0 += (rects->x + rects->y * SYSVID_WIDTH * zoom) * zoom;
 
     for (y = rects->y; y < rects->y + rects->height; y++) {
@@ -295,7 +358,7 @@ sysvid_update(rect_t *rects)
       p0 += SYSVID_WIDTH;
     }
 
-    IFDEBUG_VIDEO2(
+    /*IFDEBUG_VIDEO2(
     for (y = rects->y; y < rects->y + rects->height; y++)
       for (yz = 0; yz < zoom; yz++) {
 	p = (U8 *)screen->pixels + rects->x * zoom + (y * zoom + yz) * SYSVID_WIDTH * zoom;
@@ -309,18 +372,18 @@ sysvid_update(rect_t *rects)
 	*p = 0x01;
 	*(p + ((rects->height * zoom - 1) * zoom) * SYSVID_WIDTH) = 0x01;
       }
-    );
+    );*/
 
     area.x = rects->x * zoom;
     area.y = rects->y * zoom;
     area.h = rects->height * zoom;
     area.w = rects->width * zoom;
-    SDL_UpdateRects(screen, 1, &area);
+    //SDL_UpdateRects(screen, 1, &area);
 
     rects = rects->next;
   }
 
-  SDL_UnlockSurface(screen);
+  //SDL_UnlockSurface(screen);
 }
 
 
@@ -341,6 +404,7 @@ sysvid_clear(void)
 void
 sysvid_zoom(S8 z)
 {
+  /*
   if (!(videoFlags & SDL_FULLSCREEN) &&
       ((z < 0 && zoom > 1) ||
        (z > 0 && zoom < SYSVID_MAXZOOM))) {
@@ -351,6 +415,7 @@ sysvid_zoom(S8 z)
     sysvid_restorePalette();
     sysvid_update(&SCREENRECT);
   }
+  */
 }
 
 /*
@@ -359,6 +424,7 @@ sysvid_zoom(S8 z)
 void
 sysvid_toggleFullscreen(void)
 {
+  #if 0
   videoFlags ^= SDL_FULLSCREEN;
 
   if (videoFlags & SDL_FULLSCREEN) {  /* go fullscreen */
@@ -373,9 +439,11 @@ sysvid_toggleFullscreen(void)
 		      screen->format->BitsPerPixel, videoFlags);
   sysvid_restorePalette();
   sysvid_update(&SCREENRECT);
+  #endif
 }
 
 /* eof */
 
 
 
+ }

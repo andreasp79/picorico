@@ -32,7 +32,6 @@
 #include "devtools.h"
 #endif
 
-
 /*
  * local typedefs
  */
@@ -205,42 +204,52 @@ game_stopmusic(void)
 /*
  * Main loop
  */
-void
-game_run(void)
-{
-  U32 tm, tmx;
 
+U32 tm, tmx;
+ void game_init()
+ {
 	loaddata(); /* load cached data */
-
-	game_period = sysarg_args_period ? sysarg_args_period : GAME_PERIOD;
+	game_period = GAME_PERIOD;
 	tm = sys_gettime();
 	game_state = XRICK;
+ }
 
-	/* main loop */
-	while (game_state != EXIT) {
+ int game_update()
+ {
+	 if (game_state == EXIT)
+	 	return 0;
 
-		/* timer */
-		tmx = tm; tm = sys_gettime(); tmx = tm - tmx;
-		if (tmx < game_period) sys_sleep(game_period - tmx);
+    /* timer */
+	tmx = tm; tm = sys_gettime(); tmx = tm - tmx;
+	if (tmx < game_period) sys_sleep(game_period - tmx);
 
-		/* video */
-		/*DEBUG*//*game_rects=&draw_SCREENRECT;*//*DEBUG*/
-		sysvid_update(game_rects);
-		draw_STATUSRECT.next = NULL;  /* FIXME freerects should handle this */
+	/* sound */
+	/*snd_mix();*/
 
-		/* sound */
-		/*snd_mix();*/
+	/* events */
+	if (game_waitevt)
+		sysevt_wait();  /* wait for an event */
+	else
+		sysevt_poll();  /* process events (non-blocking) */
 
-		/* events */
-		if (game_waitevt)
-			sysevt_wait();  /* wait for an event */
-		else
-			sysevt_poll();  /* process events (non-blocking) */
+	/* frame */
+	frame();
 
-		/* frame */
-		frame();
-	}
+	return 1;
+ }
 
+ void game_draw()
+ {
+	 /* video */
+	/*DEBUG*//*game_rects=&draw_SCREENRECT;*//*DEBUG*/
+	sysvid_update(game_rects);
+	draw_STATUSRECT.next = NULL;  /* FIXME freerects should handle this */
+
+	//frame_draw();
+ }
+
+void game_shutdown()
+{
 	freedata(); /* free cached data */
 }
 

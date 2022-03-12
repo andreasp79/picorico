@@ -107,9 +107,9 @@ sys_sleep(int s)
  * Initialize system
  */
 void
-sys_init(int argc, char **argv)
+sys_init()
 {
-	sysarg_init(argc, argv);
+	//sysarg_init();
 	sysvid_init();
 #ifdef ENABLE_JOYSTICK
 	sysjoy_init();

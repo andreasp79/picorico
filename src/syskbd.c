@@ -11,10 +11,10 @@
  * You must not remove this notice, or any other, from this software.
  */
 
-#include <SDL.h>
+//#include <SDL.h>
 
 #include "system.h"
-
+/*
 U8 syskbd_up = SDLK_o;
 U8 syskbd_down = SDLK_k;
 U8 syskbd_left = SDLK_z;
@@ -23,6 +23,7 @@ U8 syskbd_pause = SDLK_p;
 U8 syskbd_end = SDLK_e;
 U8 syskbd_xtra = SDLK_ESCAPE;
 U8 syskbd_fire = SDLK_SPACE;
+*/
 
 /* eof */
 

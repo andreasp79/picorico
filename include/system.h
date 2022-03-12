@@ -73,7 +73,7 @@ typedef signed int S32;           /* 32 bits signed   */
 /*
  * main section
  */
-extern void sys_init(int, char **);
+extern void sys_init();
 extern void sys_shutdown(void);
 extern void sys_panic(char *);
 extern void sys_printf(char *);
@@ -86,8 +86,8 @@ extern void sys_sleep(int);
  */
 #define SYSVID_ZOOM 2
 #define SYSVID_MAXZOOM 4
-#define SYSVID_WIDTH 320
-#define SYSVID_HEIGHT 200
+#define SYSVID_WIDTH 240
+#define SYSVID_HEIGHT 240
 
 extern void sysvid_init(void);
 extern void sysvid_shutdown(void);
@@ -157,7 +157,7 @@ extern int sysarg_args_vol;
 #endif
 extern char *sysarg_args_data;
 
-extern void sysarg_init(int, char **);
+extern void sysarg_init();
 
 /*
  * joystick section

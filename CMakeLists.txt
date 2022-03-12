@@ -35,19 +35,20 @@ set(PROJECT_SOURCES
     src/rects.c
     src/scr_gameover.c
     src/scr_getname.c
+    src/scr_imap.c
     src/scr_imain.c
     src/scr_pause.c
     src/scr_xrick.c
     src/scroller.c
     src/sdlcodes.e
-    #src/sysarg.c
+    src/sysarg.c
     src/sysevt.cpp
-    #src/sysjoy.c
-    #src/syskbd.c
+    src/sysjoy.c
+    src/syskbd.c
     src/system.cpp
-    #src/sysvid.c
+    src/sysvid.cpp
     src/util.c
-    #src/xrick.c
+    src/xrick.c
 )
 
 # --- Here Be Boilerplate ---
@@ -82,6 +83,6 @@ picosystem_executable(
 # Set your build options here
 #pixel_double(${PROJECT_NAME})          # 120x120 resolution game, pixel-doubled to 240x240
 disable_startup_logo(${PROJECT_NAME})  # Skip the PicoSystem splash
-#no_font(${PROJECT_NAME})              # Omit the default font
-#no_spritesheet(${PROJECT_NAME})       # Omit the default spritesheet
+no_font(${PROJECT_NAME})              # Omit the default font
+no_spritesheet(${PROJECT_NAME})       # Omit the default spritesheet
 #no_overclock(${PROJECT_NAME})         # Don't overclock
