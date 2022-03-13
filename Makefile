@@ -75,17 +75,6 @@ CMAKE_BINARY_DIR = /home/pi/picogame
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -97,6 +86,17 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target install
 install: preinstall
@@ -189,17 +189,17 @@ ELF2UF2Build/fast:
 .PHONY : ELF2UF2Build/fast
 
 #=============================================================================
-# Target rules for targets named my_project
+# Target rules for targets named picorick
 
 # Build rule for target.
-my_project: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my_project
-.PHONY : my_project
+picorick: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 picorick
+.PHONY : picorick
 
 # fast build rule for target.
-my_project/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/build
-.PHONY : my_project/fast
+picorick/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/build
+.PHONY : picorick/fast
 
 #=============================================================================
 # Target rules for targets named picosystem_screen_pio_h
@@ -285,7 +285,7 @@ home/pi/pico-sdk/src/common/pico_sync/critical_section.obj: home/pi/pico-sdk/src
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_sync/critical_section.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/critical_section.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/critical_section.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/critical_section.c.obj
 
 home/pi/pico-sdk/src/common/pico_sync/critical_section.i: home/pi/pico-sdk/src/common/pico_sync/critical_section.c.i
@@ -294,7 +294,7 @@ home/pi/pico-sdk/src/common/pico_sync/critical_section.i: home/pi/pico-sdk/src/c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_sync/critical_section.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/critical_section.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/critical_section.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/critical_section.c.i
 
 home/pi/pico-sdk/src/common/pico_sync/critical_section.s: home/pi/pico-sdk/src/common/pico_sync/critical_section.c.s
@@ -303,7 +303,7 @@ home/pi/pico-sdk/src/common/pico_sync/critical_section.s: home/pi/pico-sdk/src/c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_sync/critical_section.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/critical_section.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/critical_section.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/critical_section.c.s
 
 home/pi/pico-sdk/src/common/pico_sync/lock_core.obj: home/pi/pico-sdk/src/common/pico_sync/lock_core.c.obj
@@ -312,7 +312,7 @@ home/pi/pico-sdk/src/common/pico_sync/lock_core.obj: home/pi/pico-sdk/src/common
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_sync/lock_core.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/lock_core.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/lock_core.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/lock_core.c.obj
 
 home/pi/pico-sdk/src/common/pico_sync/lock_core.i: home/pi/pico-sdk/src/common/pico_sync/lock_core.c.i
@@ -321,7 +321,7 @@ home/pi/pico-sdk/src/common/pico_sync/lock_core.i: home/pi/pico-sdk/src/common/p
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_sync/lock_core.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/lock_core.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/lock_core.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/lock_core.c.i
 
 home/pi/pico-sdk/src/common/pico_sync/lock_core.s: home/pi/pico-sdk/src/common/pico_sync/lock_core.c.s
@@ -330,7 +330,7 @@ home/pi/pico-sdk/src/common/pico_sync/lock_core.s: home/pi/pico-sdk/src/common/p
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_sync/lock_core.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/lock_core.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/lock_core.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/lock_core.c.s
 
 home/pi/pico-sdk/src/common/pico_sync/mutex.obj: home/pi/pico-sdk/src/common/pico_sync/mutex.c.obj
@@ -339,7 +339,7 @@ home/pi/pico-sdk/src/common/pico_sync/mutex.obj: home/pi/pico-sdk/src/common/pic
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_sync/mutex.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/mutex.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/mutex.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/mutex.c.obj
 
 home/pi/pico-sdk/src/common/pico_sync/mutex.i: home/pi/pico-sdk/src/common/pico_sync/mutex.c.i
@@ -348,7 +348,7 @@ home/pi/pico-sdk/src/common/pico_sync/mutex.i: home/pi/pico-sdk/src/common/pico_
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_sync/mutex.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/mutex.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/mutex.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/mutex.c.i
 
 home/pi/pico-sdk/src/common/pico_sync/mutex.s: home/pi/pico-sdk/src/common/pico_sync/mutex.c.s
@@ -357,7 +357,7 @@ home/pi/pico-sdk/src/common/pico_sync/mutex.s: home/pi/pico-sdk/src/common/pico_
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_sync/mutex.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/mutex.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/mutex.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/mutex.c.s
 
 home/pi/pico-sdk/src/common/pico_sync/sem.obj: home/pi/pico-sdk/src/common/pico_sync/sem.c.obj
@@ -366,7 +366,7 @@ home/pi/pico-sdk/src/common/pico_sync/sem.obj: home/pi/pico-sdk/src/common/pico_
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_sync/sem.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/sem.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/sem.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/sem.c.obj
 
 home/pi/pico-sdk/src/common/pico_sync/sem.i: home/pi/pico-sdk/src/common/pico_sync/sem.c.i
@@ -375,7 +375,7 @@ home/pi/pico-sdk/src/common/pico_sync/sem.i: home/pi/pico-sdk/src/common/pico_sy
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_sync/sem.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/sem.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/sem.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/sem.c.i
 
 home/pi/pico-sdk/src/common/pico_sync/sem.s: home/pi/pico-sdk/src/common/pico_sync/sem.c.s
@@ -384,7 +384,7 @@ home/pi/pico-sdk/src/common/pico_sync/sem.s: home/pi/pico-sdk/src/common/pico_sy
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_sync/sem.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_sync/sem.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_sync/sem.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_sync/sem.c.s
 
 home/pi/pico-sdk/src/common/pico_time/time.obj: home/pi/pico-sdk/src/common/pico_time/time.c.obj
@@ -393,7 +393,7 @@ home/pi/pico-sdk/src/common/pico_time/time.obj: home/pi/pico-sdk/src/common/pico
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_time/time.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_time/time.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_time/time.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_time/time.c.obj
 
 home/pi/pico-sdk/src/common/pico_time/time.i: home/pi/pico-sdk/src/common/pico_time/time.c.i
@@ -402,7 +402,7 @@ home/pi/pico-sdk/src/common/pico_time/time.i: home/pi/pico-sdk/src/common/pico_t
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_time/time.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_time/time.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_time/time.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_time/time.c.i
 
 home/pi/pico-sdk/src/common/pico_time/time.s: home/pi/pico-sdk/src/common/pico_time/time.c.s
@@ -411,7 +411,7 @@ home/pi/pico-sdk/src/common/pico_time/time.s: home/pi/pico-sdk/src/common/pico_t
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_time/time.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_time/time.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_time/time.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_time/time.c.s
 
 home/pi/pico-sdk/src/common/pico_time/timeout_helper.obj: home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.obj
@@ -420,7 +420,7 @@ home/pi/pico-sdk/src/common/pico_time/timeout_helper.obj: home/pi/pico-sdk/src/c
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.obj
 
 home/pi/pico-sdk/src/common/pico_time/timeout_helper.i: home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.i
@@ -429,7 +429,7 @@ home/pi/pico-sdk/src/common/pico_time/timeout_helper.i: home/pi/pico-sdk/src/com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.i
 
 home/pi/pico-sdk/src/common/pico_time/timeout_helper.s: home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.s
@@ -438,7 +438,7 @@ home/pi/pico-sdk/src/common/pico_time/timeout_helper.s: home/pi/pico-sdk/src/com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_time/timeout_helper.c.s
 
 home/pi/pico-sdk/src/common/pico_util/datetime.obj: home/pi/pico-sdk/src/common/pico_util/datetime.c.obj
@@ -447,7 +447,7 @@ home/pi/pico-sdk/src/common/pico_util/datetime.obj: home/pi/pico-sdk/src/common/
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_util/datetime.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/datetime.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/datetime.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_util/datetime.c.obj
 
 home/pi/pico-sdk/src/common/pico_util/datetime.i: home/pi/pico-sdk/src/common/pico_util/datetime.c.i
@@ -456,7 +456,7 @@ home/pi/pico-sdk/src/common/pico_util/datetime.i: home/pi/pico-sdk/src/common/pi
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_util/datetime.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/datetime.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/datetime.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_util/datetime.c.i
 
 home/pi/pico-sdk/src/common/pico_util/datetime.s: home/pi/pico-sdk/src/common/pico_util/datetime.c.s
@@ -465,7 +465,7 @@ home/pi/pico-sdk/src/common/pico_util/datetime.s: home/pi/pico-sdk/src/common/pi
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_util/datetime.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/datetime.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/datetime.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_util/datetime.c.s
 
 home/pi/pico-sdk/src/common/pico_util/pheap.obj: home/pi/pico-sdk/src/common/pico_util/pheap.c.obj
@@ -474,7 +474,7 @@ home/pi/pico-sdk/src/common/pico_util/pheap.obj: home/pi/pico-sdk/src/common/pic
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_util/pheap.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/pheap.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/pheap.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_util/pheap.c.obj
 
 home/pi/pico-sdk/src/common/pico_util/pheap.i: home/pi/pico-sdk/src/common/pico_util/pheap.c.i
@@ -483,7 +483,7 @@ home/pi/pico-sdk/src/common/pico_util/pheap.i: home/pi/pico-sdk/src/common/pico_
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_util/pheap.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/pheap.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/pheap.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_util/pheap.c.i
 
 home/pi/pico-sdk/src/common/pico_util/pheap.s: home/pi/pico-sdk/src/common/pico_util/pheap.c.s
@@ -492,7 +492,7 @@ home/pi/pico-sdk/src/common/pico_util/pheap.s: home/pi/pico-sdk/src/common/pico_
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_util/pheap.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/pheap.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/pheap.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_util/pheap.c.s
 
 home/pi/pico-sdk/src/common/pico_util/queue.obj: home/pi/pico-sdk/src/common/pico_util/queue.c.obj
@@ -501,7 +501,7 @@ home/pi/pico-sdk/src/common/pico_util/queue.obj: home/pi/pico-sdk/src/common/pic
 
 # target to build an object file
 home/pi/pico-sdk/src/common/pico_util/queue.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/queue.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/queue.c.obj
 .PHONY : home/pi/pico-sdk/src/common/pico_util/queue.c.obj
 
 home/pi/pico-sdk/src/common/pico_util/queue.i: home/pi/pico-sdk/src/common/pico_util/queue.c.i
@@ -510,7 +510,7 @@ home/pi/pico-sdk/src/common/pico_util/queue.i: home/pi/pico-sdk/src/common/pico_
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/common/pico_util/queue.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/queue.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/queue.c.i
 .PHONY : home/pi/pico-sdk/src/common/pico_util/queue.c.i
 
 home/pi/pico-sdk/src/common/pico_util/queue.s: home/pi/pico-sdk/src/common/pico_util/queue.c.s
@@ -519,7 +519,7 @@ home/pi/pico-sdk/src/common/pico_util/queue.s: home/pi/pico-sdk/src/common/pico_
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/common/pico_util/queue.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/common/pico_util/queue.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/common/pico_util/queue.c.s
 .PHONY : home/pi/pico-sdk/src/common/pico_util/queue.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.obj: home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
@@ -528,7 +528,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.i: home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
@@ -537,7 +537,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.s: home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
@@ -546,7 +546,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_adc/adc.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.obj: home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
@@ -555,7 +555,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.obj: home/pi/pico-sdk/src/r
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.i: home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
@@ -564,7 +564,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.i: home/pi/pico-sdk/src/rp2
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.s: home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
@@ -573,7 +573,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.s: home/pi/pico-sdk/src/rp2
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_claim/claim.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.obj: home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
@@ -582,7 +582,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.obj: home/pi/pico-sdk/src
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.i: home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
@@ -591,7 +591,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.i: home/pi/pico-sdk/src/r
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.s: home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
@@ -600,7 +600,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.s: home/pi/pico-sdk/src/r
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_clocks/clocks.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.obj: home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
@@ -609,7 +609,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.obj: home/pi/pico-sdk/s
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_divider/divider.S.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.obj: home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj
@@ -618,7 +618,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.i: home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.i
@@ -627,7 +627,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.s: home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.s
@@ -636,7 +636,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_dma/dma.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.obj: home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
@@ -645,7 +645,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.i: home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
@@ -654,7 +654,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.s: home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
@@ -663,7 +663,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_gpio/gpio.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.obj: home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.obj
@@ -672,7 +672,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.obj: home/pi/pico-sdk/src
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.i: home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.i
@@ -681,7 +681,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.i: home/pi/pico-sdk/src/r
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.s: home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.s
@@ -690,7 +690,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.s: home/pi/pico-sdk/src/r
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_interp/interp.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.obj: home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
@@ -699,7 +699,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.i: home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
@@ -708,7 +708,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.s: home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
@@ -717,7 +717,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_irq/irq.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.obj: home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
@@ -726,7 +726,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.obj: home/pi/pico
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.obj: home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
@@ -735,7 +735,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.i: home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
@@ -744,7 +744,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.s: home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
@@ -753,7 +753,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_pio/pio.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.obj: home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
@@ -762,7 +762,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.i: home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
@@ -771,7 +771,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.s: home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
@@ -780,7 +780,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_pll/pll.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.obj: home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
@@ -789,7 +789,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.i: home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
@@ -798,7 +798,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.s: home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
@@ -807,7 +807,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_spi/spi.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.obj: home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
@@ -816,7 +816,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.i: home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
@@ -825,7 +825,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.s: home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
@@ -834,7 +834,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_sync/sync.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.obj: home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
@@ -843,7 +843,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.obj: home/pi/pico-sdk/src/r
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.i: home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
@@ -852,7 +852,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.i: home/pi/pico-sdk/src/rp2
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.s: home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
@@ -861,7 +861,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.s: home/pi/pico-sdk/src/rp2
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_timer/timer.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.obj: home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
@@ -870,7 +870,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.i: home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
@@ -879,7 +879,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.s: home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
@@ -888,7 +888,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_uart/uart.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.obj: home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
@@ -897,7 +897,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.i: home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
@@ -906,7 +906,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.s: home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
@@ -915,7 +915,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_vreg/vreg.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.obj: home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
@@ -924,7 +924,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.obj: home/pi/pico-sdk
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.i: home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
@@ -933,7 +933,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.i: home/pi/pico-sdk/s
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.s: home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
@@ -942,7 +942,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.s: home/pi/pico-sdk/s
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_watchdog/watchdog.c.s
 
 home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.obj: home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
@@ -951,7 +951,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.obj
 
 home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.i: home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
@@ -960,7 +960,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.i
 
 home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.s: home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
@@ -969,7 +969,7 @@ home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/hardware_xosc/xosc.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.obj: home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
@@ -978,7 +978,7 @@ home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.obj: home/pi/pico-sdk
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.obj: home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
@@ -987,7 +987,7 @@ home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.obj: home/pi/pico-sdk/src/r
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.i: home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
@@ -996,7 +996,7 @@ home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.i: home/pi/pico-sdk/src/rp2
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.s: home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
@@ -1005,7 +1005,7 @@ home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.s: home/pi/pico-sdk/src/rp2
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_divider/divider.obj: home/pi/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
@@ -1014,7 +1014,7 @@ home/pi/pico-sdk/src/rp2_common/pico_divider/divider.obj: home/pi/pico-sdk/src/r
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_divider/divider.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_divider/divider.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.obj: home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
@@ -1023,7 +1023,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.obj: home/pi/pico-sdk/s
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_aeabi.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.obj: home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
@@ -1032,7 +1032,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.obj: home/pi/pico-sd
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.i: home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
@@ -1041,7 +1041,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.i: home/pi/pico-sdk/
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.s: home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
@@ -1050,7 +1050,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.s: home/pi/pico-sdk/
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_init_rom.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_math.obj: home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
@@ -1059,7 +1059,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_math.obj: home/pi/pico-sdk/sr
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_math.i: home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.i
@@ -1068,7 +1068,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_math.i: home/pi/pico-sdk/src/
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_math.s: home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.s
@@ -1077,7 +1077,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_math.s: home/pi/pico-sdk/src/
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_math.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.obj: home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
@@ -1086,7 +1086,7 @@ home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.obj: home/pi/pico
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.obj: home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
@@ -1095,7 +1095,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.obj: home/pi/pico-sdk/src
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_aeabi.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.obj: home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
@@ -1104,7 +1104,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.obj: home/pi/pico-sdk/
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.i: home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
@@ -1113,7 +1113,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.i: home/pi/pico-sdk/sr
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.s: home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
@@ -1122,7 +1122,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.s: home/pi/pico-sdk/sr
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_init_rom.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_math.obj: home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
@@ -1131,7 +1131,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_math.obj: home/pi/pico-sdk/src/
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_math.i: home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.i
@@ -1140,7 +1140,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_math.i: home/pi/pico-sdk/src/rp
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_math.s: home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.s
@@ -1149,7 +1149,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_math.s: home/pi/pico-sdk/src/rp
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_math.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.obj: home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
@@ -1158,7 +1158,7 @@ home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.obj: home/pi/pico-s
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.obj: home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
@@ -1167,7 +1167,7 @@ home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.obj: home/pi
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.obj: home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
@@ -1176,7 +1176,7 @@ home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.obj: home/pi/pico-sdk/sr
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i: home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
@@ -1185,7 +1185,7 @@ home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.i: home/pi/pico-sdk/src/
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s: home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
@@ -1194,7 +1194,7 @@ home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.s: home/pi/pico-sdk/src/
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj: home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
@@ -1203,7 +1203,7 @@ home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.obj: home/pi/pico-sdk
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_platform/platform.obj: home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
@@ -1212,7 +1212,7 @@ home/pi/pico-sdk/src/rp2_common/pico_platform/platform.obj: home/pi/pico-sdk/src
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_platform/platform.i: home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.i
@@ -1221,7 +1221,7 @@ home/pi/pico-sdk/src/rp2_common/pico_platform/platform.i: home/pi/pico-sdk/src/r
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_platform/platform.s: home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.s
@@ -1230,7 +1230,7 @@ home/pi/pico-sdk/src/rp2_common/pico_platform/platform.s: home/pi/pico-sdk/src/r
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_platform/platform.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_printf/printf.obj: home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
@@ -1239,7 +1239,7 @@ home/pi/pico-sdk/src/rp2_common/pico_printf/printf.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_printf/printf.i: home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.i
@@ -1248,7 +1248,7 @@ home/pi/pico-sdk/src/rp2_common/pico_printf/printf.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_printf/printf.s: home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.s
@@ -1257,7 +1257,7 @@ home/pi/pico-sdk/src/rp2_common/pico_printf/printf.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_printf/printf.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.obj: home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
@@ -1266,7 +1266,7 @@ home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.obj: home/pi/pico-sdk/src/r
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.i: home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
@@ -1275,7 +1275,7 @@ home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.i: home/pi/pico-sdk/src/rp2
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.s: home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
@@ -1284,7 +1284,7 @@ home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.s: home/pi/pico-sdk/src/rp2
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_runtime/runtime.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.obj: home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
@@ -1293,7 +1293,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.obj: home/pi/pico
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.i: home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
@@ -1302,7 +1302,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.i: home/pi/pico-s
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.s: home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
@@ -1311,7 +1311,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.s: home/pi/pico-s
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.obj: home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
@@ -1320,7 +1320,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.obj: home/pi/pico-sdk/sr
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/crt0.S.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.obj: home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
@@ -1329,7 +1329,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.obj: home/pi/pico-
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.i: home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
@@ -1338,7 +1338,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.i: home/pi/pico-sd
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.i
 
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.s: home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
@@ -1347,7 +1347,7 @@ home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.s: home/pi/pico-sd
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp.s
 
 home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.obj: home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
@@ -1356,7 +1356,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.obj: home/pi/pico-sdk/src/rp2_c
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.i: home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
@@ -1365,7 +1365,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.i: home/pi/pico-sdk/src/rp2_com
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.s: home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
@@ -1374,7 +1374,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.s: home/pi/pico-sdk/src/rp2_com
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdio/stdio.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.obj: home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
@@ -1383,7 +1383,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.obj: home/pi/pico-sdk
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i: home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
@@ -1392,7 +1392,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.i: home/pi/pico-sdk/s
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s: home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
@@ -1401,7 +1401,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.s: home/pi/pico-sdk/s
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c.s
 
 home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj: home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
@@ -1410,7 +1410,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.obj: home/pi/pico-sdk/src/rp2
 
 # target to build an object file
 home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.obj
 
 home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i: home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
@@ -1419,7 +1419,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.i: home/pi/pico-sdk/src/rp2_c
 
 # target to preprocess a source file
 home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.i
 
 home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s: home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
@@ -1428,7 +1428,7 @@ home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.s: home/pi/pico-sdk/src/rp2_c
 
 # target to generate assembly for a file
 home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 .PHONY : home/pi/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c.s
 
 home/pi/picosystem/libraries/assets.obj: home/pi/picosystem/libraries/assets.cpp.obj
@@ -1437,7 +1437,7 @@ home/pi/picosystem/libraries/assets.obj: home/pi/picosystem/libraries/assets.cpp
 
 # target to build an object file
 home/pi/picosystem/libraries/assets.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/assets.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/assets.cpp.obj
 .PHONY : home/pi/picosystem/libraries/assets.cpp.obj
 
 home/pi/picosystem/libraries/assets.i: home/pi/picosystem/libraries/assets.cpp.i
@@ -1446,7 +1446,7 @@ home/pi/picosystem/libraries/assets.i: home/pi/picosystem/libraries/assets.cpp.i
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/assets.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/assets.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/assets.cpp.i
 .PHONY : home/pi/picosystem/libraries/assets.cpp.i
 
 home/pi/picosystem/libraries/assets.s: home/pi/picosystem/libraries/assets.cpp.s
@@ -1455,7 +1455,7 @@ home/pi/picosystem/libraries/assets.s: home/pi/picosystem/libraries/assets.cpp.s
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/assets.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/assets.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/assets.cpp.s
 .PHONY : home/pi/picosystem/libraries/assets.cpp.s
 
 home/pi/picosystem/libraries/audio.obj: home/pi/picosystem/libraries/audio.cpp.obj
@@ -1464,7 +1464,7 @@ home/pi/picosystem/libraries/audio.obj: home/pi/picosystem/libraries/audio.cpp.o
 
 # target to build an object file
 home/pi/picosystem/libraries/audio.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/audio.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/audio.cpp.obj
 .PHONY : home/pi/picosystem/libraries/audio.cpp.obj
 
 home/pi/picosystem/libraries/audio.i: home/pi/picosystem/libraries/audio.cpp.i
@@ -1473,7 +1473,7 @@ home/pi/picosystem/libraries/audio.i: home/pi/picosystem/libraries/audio.cpp.i
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/audio.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/audio.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/audio.cpp.i
 .PHONY : home/pi/picosystem/libraries/audio.cpp.i
 
 home/pi/picosystem/libraries/audio.s: home/pi/picosystem/libraries/audio.cpp.s
@@ -1482,7 +1482,7 @@ home/pi/picosystem/libraries/audio.s: home/pi/picosystem/libraries/audio.cpp.s
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/audio.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/audio.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/audio.cpp.s
 .PHONY : home/pi/picosystem/libraries/audio.cpp.s
 
 home/pi/picosystem/libraries/blend.obj: home/pi/picosystem/libraries/blend.cpp.obj
@@ -1491,7 +1491,7 @@ home/pi/picosystem/libraries/blend.obj: home/pi/picosystem/libraries/blend.cpp.o
 
 # target to build an object file
 home/pi/picosystem/libraries/blend.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/blend.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/blend.cpp.obj
 .PHONY : home/pi/picosystem/libraries/blend.cpp.obj
 
 home/pi/picosystem/libraries/blend.i: home/pi/picosystem/libraries/blend.cpp.i
@@ -1500,7 +1500,7 @@ home/pi/picosystem/libraries/blend.i: home/pi/picosystem/libraries/blend.cpp.i
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/blend.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/blend.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/blend.cpp.i
 .PHONY : home/pi/picosystem/libraries/blend.cpp.i
 
 home/pi/picosystem/libraries/blend.s: home/pi/picosystem/libraries/blend.cpp.s
@@ -1509,7 +1509,7 @@ home/pi/picosystem/libraries/blend.s: home/pi/picosystem/libraries/blend.cpp.s
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/blend.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/blend.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/blend.cpp.s
 .PHONY : home/pi/picosystem/libraries/blend.cpp.s
 
 home/pi/picosystem/libraries/hardware.obj: home/pi/picosystem/libraries/hardware.cpp.obj
@@ -1518,7 +1518,7 @@ home/pi/picosystem/libraries/hardware.obj: home/pi/picosystem/libraries/hardware
 
 # target to build an object file
 home/pi/picosystem/libraries/hardware.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/hardware.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/hardware.cpp.obj
 .PHONY : home/pi/picosystem/libraries/hardware.cpp.obj
 
 home/pi/picosystem/libraries/hardware.i: home/pi/picosystem/libraries/hardware.cpp.i
@@ -1527,7 +1527,7 @@ home/pi/picosystem/libraries/hardware.i: home/pi/picosystem/libraries/hardware.c
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/hardware.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/hardware.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/hardware.cpp.i
 .PHONY : home/pi/picosystem/libraries/hardware.cpp.i
 
 home/pi/picosystem/libraries/hardware.s: home/pi/picosystem/libraries/hardware.cpp.s
@@ -1536,7 +1536,7 @@ home/pi/picosystem/libraries/hardware.s: home/pi/picosystem/libraries/hardware.c
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/hardware.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/hardware.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/hardware.cpp.s
 .PHONY : home/pi/picosystem/libraries/hardware.cpp.s
 
 home/pi/picosystem/libraries/picosystem.obj: home/pi/picosystem/libraries/picosystem.cpp.obj
@@ -1545,7 +1545,7 @@ home/pi/picosystem/libraries/picosystem.obj: home/pi/picosystem/libraries/picosy
 
 # target to build an object file
 home/pi/picosystem/libraries/picosystem.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/picosystem.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/picosystem.cpp.obj
 .PHONY : home/pi/picosystem/libraries/picosystem.cpp.obj
 
 home/pi/picosystem/libraries/picosystem.i: home/pi/picosystem/libraries/picosystem.cpp.i
@@ -1554,7 +1554,7 @@ home/pi/picosystem/libraries/picosystem.i: home/pi/picosystem/libraries/picosyst
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/picosystem.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/picosystem.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/picosystem.cpp.i
 .PHONY : home/pi/picosystem/libraries/picosystem.cpp.i
 
 home/pi/picosystem/libraries/picosystem.s: home/pi/picosystem/libraries/picosystem.cpp.s
@@ -1563,7 +1563,7 @@ home/pi/picosystem/libraries/picosystem.s: home/pi/picosystem/libraries/picosyst
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/picosystem.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/picosystem.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/picosystem.cpp.s
 .PHONY : home/pi/picosystem/libraries/picosystem.cpp.s
 
 home/pi/picosystem/libraries/primitives.obj: home/pi/picosystem/libraries/primitives.cpp.obj
@@ -1572,7 +1572,7 @@ home/pi/picosystem/libraries/primitives.obj: home/pi/picosystem/libraries/primit
 
 # target to build an object file
 home/pi/picosystem/libraries/primitives.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/primitives.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/primitives.cpp.obj
 .PHONY : home/pi/picosystem/libraries/primitives.cpp.obj
 
 home/pi/picosystem/libraries/primitives.i: home/pi/picosystem/libraries/primitives.cpp.i
@@ -1581,7 +1581,7 @@ home/pi/picosystem/libraries/primitives.i: home/pi/picosystem/libraries/primitiv
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/primitives.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/primitives.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/primitives.cpp.i
 .PHONY : home/pi/picosystem/libraries/primitives.cpp.i
 
 home/pi/picosystem/libraries/primitives.s: home/pi/picosystem/libraries/primitives.cpp.s
@@ -1590,7 +1590,7 @@ home/pi/picosystem/libraries/primitives.s: home/pi/picosystem/libraries/primitiv
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/primitives.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/primitives.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/primitives.cpp.s
 .PHONY : home/pi/picosystem/libraries/primitives.cpp.s
 
 home/pi/picosystem/libraries/state.obj: home/pi/picosystem/libraries/state.cpp.obj
@@ -1599,7 +1599,7 @@ home/pi/picosystem/libraries/state.obj: home/pi/picosystem/libraries/state.cpp.o
 
 # target to build an object file
 home/pi/picosystem/libraries/state.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/state.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/state.cpp.obj
 .PHONY : home/pi/picosystem/libraries/state.cpp.obj
 
 home/pi/picosystem/libraries/state.i: home/pi/picosystem/libraries/state.cpp.i
@@ -1608,7 +1608,7 @@ home/pi/picosystem/libraries/state.i: home/pi/picosystem/libraries/state.cpp.i
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/state.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/state.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/state.cpp.i
 .PHONY : home/pi/picosystem/libraries/state.cpp.i
 
 home/pi/picosystem/libraries/state.s: home/pi/picosystem/libraries/state.cpp.s
@@ -1617,7 +1617,7 @@ home/pi/picosystem/libraries/state.s: home/pi/picosystem/libraries/state.cpp.s
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/state.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/state.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/state.cpp.s
 .PHONY : home/pi/picosystem/libraries/state.cpp.s
 
 home/pi/picosystem/libraries/text.obj: home/pi/picosystem/libraries/text.cpp.obj
@@ -1626,7 +1626,7 @@ home/pi/picosystem/libraries/text.obj: home/pi/picosystem/libraries/text.cpp.obj
 
 # target to build an object file
 home/pi/picosystem/libraries/text.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/text.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/text.cpp.obj
 .PHONY : home/pi/picosystem/libraries/text.cpp.obj
 
 home/pi/picosystem/libraries/text.i: home/pi/picosystem/libraries/text.cpp.i
@@ -1635,7 +1635,7 @@ home/pi/picosystem/libraries/text.i: home/pi/picosystem/libraries/text.cpp.i
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/text.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/text.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/text.cpp.i
 .PHONY : home/pi/picosystem/libraries/text.cpp.i
 
 home/pi/picosystem/libraries/text.s: home/pi/picosystem/libraries/text.cpp.s
@@ -1644,7 +1644,7 @@ home/pi/picosystem/libraries/text.s: home/pi/picosystem/libraries/text.cpp.s
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/text.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/text.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/text.cpp.s
 .PHONY : home/pi/picosystem/libraries/text.cpp.s
 
 home/pi/picosystem/libraries/utility.obj: home/pi/picosystem/libraries/utility.cpp.obj
@@ -1653,7 +1653,7 @@ home/pi/picosystem/libraries/utility.obj: home/pi/picosystem/libraries/utility.c
 
 # target to build an object file
 home/pi/picosystem/libraries/utility.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/utility.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/utility.cpp.obj
 .PHONY : home/pi/picosystem/libraries/utility.cpp.obj
 
 home/pi/picosystem/libraries/utility.i: home/pi/picosystem/libraries/utility.cpp.i
@@ -1662,7 +1662,7 @@ home/pi/picosystem/libraries/utility.i: home/pi/picosystem/libraries/utility.cpp
 
 # target to preprocess a source file
 home/pi/picosystem/libraries/utility.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/utility.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/utility.cpp.i
 .PHONY : home/pi/picosystem/libraries/utility.cpp.i
 
 home/pi/picosystem/libraries/utility.s: home/pi/picosystem/libraries/utility.cpp.s
@@ -1671,7 +1671,7 @@ home/pi/picosystem/libraries/utility.s: home/pi/picosystem/libraries/utility.cpp
 
 # target to generate assembly for a file
 home/pi/picosystem/libraries/utility.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/home/pi/picosystem/libraries/utility.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/home/pi/picosystem/libraries/utility.cpp.s
 .PHONY : home/pi/picosystem/libraries/utility.cpp.s
 
 src/control.obj: src/control.c.obj
@@ -1680,7 +1680,7 @@ src/control.obj: src/control.c.obj
 
 # target to build an object file
 src/control.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/control.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/control.c.obj
 .PHONY : src/control.c.obj
 
 src/control.i: src/control.c.i
@@ -1689,7 +1689,7 @@ src/control.i: src/control.c.i
 
 # target to preprocess a source file
 src/control.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/control.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/control.c.i
 .PHONY : src/control.c.i
 
 src/control.s: src/control.c.s
@@ -1698,7 +1698,7 @@ src/control.s: src/control.c.s
 
 # target to generate assembly for a file
 src/control.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/control.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/control.c.s
 .PHONY : src/control.c.s
 
 src/dat_ents.obj: src/dat_ents.c.obj
@@ -1707,7 +1707,7 @@ src/dat_ents.obj: src/dat_ents.c.obj
 
 # target to build an object file
 src/dat_ents.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_ents.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_ents.c.obj
 .PHONY : src/dat_ents.c.obj
 
 src/dat_ents.i: src/dat_ents.c.i
@@ -1716,7 +1716,7 @@ src/dat_ents.i: src/dat_ents.c.i
 
 # target to preprocess a source file
 src/dat_ents.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_ents.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_ents.c.i
 .PHONY : src/dat_ents.c.i
 
 src/dat_ents.s: src/dat_ents.c.s
@@ -1725,7 +1725,7 @@ src/dat_ents.s: src/dat_ents.c.s
 
 # target to generate assembly for a file
 src/dat_ents.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_ents.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_ents.c.s
 .PHONY : src/dat_ents.c.s
 
 src/dat_maps.obj: src/dat_maps.c.obj
@@ -1734,7 +1734,7 @@ src/dat_maps.obj: src/dat_maps.c.obj
 
 # target to build an object file
 src/dat_maps.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_maps.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_maps.c.obj
 .PHONY : src/dat_maps.c.obj
 
 src/dat_maps.i: src/dat_maps.c.i
@@ -1743,7 +1743,7 @@ src/dat_maps.i: src/dat_maps.c.i
 
 # target to preprocess a source file
 src/dat_maps.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_maps.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_maps.c.i
 .PHONY : src/dat_maps.c.i
 
 src/dat_maps.s: src/dat_maps.c.s
@@ -1752,7 +1752,7 @@ src/dat_maps.s: src/dat_maps.c.s
 
 # target to generate assembly for a file
 src/dat_maps.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_maps.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_maps.c.s
 .PHONY : src/dat_maps.c.s
 
 src/dat_picsPC.obj: src/dat_picsPC.c.obj
@@ -1761,7 +1761,7 @@ src/dat_picsPC.obj: src/dat_picsPC.c.obj
 
 # target to build an object file
 src/dat_picsPC.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_picsPC.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_picsPC.c.obj
 .PHONY : src/dat_picsPC.c.obj
 
 src/dat_picsPC.i: src/dat_picsPC.c.i
@@ -1770,7 +1770,7 @@ src/dat_picsPC.i: src/dat_picsPC.c.i
 
 # target to preprocess a source file
 src/dat_picsPC.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_picsPC.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_picsPC.c.i
 .PHONY : src/dat_picsPC.c.i
 
 src/dat_picsPC.s: src/dat_picsPC.c.s
@@ -1779,7 +1779,7 @@ src/dat_picsPC.s: src/dat_picsPC.c.s
 
 # target to generate assembly for a file
 src/dat_picsPC.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_picsPC.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_picsPC.c.s
 .PHONY : src/dat_picsPC.c.s
 
 src/dat_picsST.obj: src/dat_picsST.c.obj
@@ -1788,7 +1788,7 @@ src/dat_picsST.obj: src/dat_picsST.c.obj
 
 # target to build an object file
 src/dat_picsST.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_picsST.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_picsST.c.obj
 .PHONY : src/dat_picsST.c.obj
 
 src/dat_picsST.i: src/dat_picsST.c.i
@@ -1797,7 +1797,7 @@ src/dat_picsST.i: src/dat_picsST.c.i
 
 # target to preprocess a source file
 src/dat_picsST.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_picsST.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_picsST.c.i
 .PHONY : src/dat_picsST.c.i
 
 src/dat_picsST.s: src/dat_picsST.c.s
@@ -1806,7 +1806,7 @@ src/dat_picsST.s: src/dat_picsST.c.s
 
 # target to generate assembly for a file
 src/dat_picsST.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_picsST.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_picsST.c.s
 .PHONY : src/dat_picsST.c.s
 
 src/dat_screens.obj: src/dat_screens.c.obj
@@ -1815,7 +1815,7 @@ src/dat_screens.obj: src/dat_screens.c.obj
 
 # target to build an object file
 src/dat_screens.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_screens.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_screens.c.obj
 .PHONY : src/dat_screens.c.obj
 
 src/dat_screens.i: src/dat_screens.c.i
@@ -1824,7 +1824,7 @@ src/dat_screens.i: src/dat_screens.c.i
 
 # target to preprocess a source file
 src/dat_screens.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_screens.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_screens.c.i
 .PHONY : src/dat_screens.c.i
 
 src/dat_screens.s: src/dat_screens.c.s
@@ -1833,7 +1833,7 @@ src/dat_screens.s: src/dat_screens.c.s
 
 # target to generate assembly for a file
 src/dat_screens.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_screens.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_screens.c.s
 .PHONY : src/dat_screens.c.s
 
 src/dat_spritesPC.obj: src/dat_spritesPC.c.obj
@@ -1842,7 +1842,7 @@ src/dat_spritesPC.obj: src/dat_spritesPC.c.obj
 
 # target to build an object file
 src/dat_spritesPC.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_spritesPC.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_spritesPC.c.obj
 .PHONY : src/dat_spritesPC.c.obj
 
 src/dat_spritesPC.i: src/dat_spritesPC.c.i
@@ -1851,7 +1851,7 @@ src/dat_spritesPC.i: src/dat_spritesPC.c.i
 
 # target to preprocess a source file
 src/dat_spritesPC.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_spritesPC.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_spritesPC.c.i
 .PHONY : src/dat_spritesPC.c.i
 
 src/dat_spritesPC.s: src/dat_spritesPC.c.s
@@ -1860,7 +1860,7 @@ src/dat_spritesPC.s: src/dat_spritesPC.c.s
 
 # target to generate assembly for a file
 src/dat_spritesPC.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_spritesPC.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_spritesPC.c.s
 .PHONY : src/dat_spritesPC.c.s
 
 src/dat_spritesST.obj: src/dat_spritesST.c.obj
@@ -1869,7 +1869,7 @@ src/dat_spritesST.obj: src/dat_spritesST.c.obj
 
 # target to build an object file
 src/dat_spritesST.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_spritesST.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_spritesST.c.obj
 .PHONY : src/dat_spritesST.c.obj
 
 src/dat_spritesST.i: src/dat_spritesST.c.i
@@ -1878,7 +1878,7 @@ src/dat_spritesST.i: src/dat_spritesST.c.i
 
 # target to preprocess a source file
 src/dat_spritesST.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_spritesST.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_spritesST.c.i
 .PHONY : src/dat_spritesST.c.i
 
 src/dat_spritesST.s: src/dat_spritesST.c.s
@@ -1887,7 +1887,7 @@ src/dat_spritesST.s: src/dat_spritesST.c.s
 
 # target to generate assembly for a file
 src/dat_spritesST.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_spritesST.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_spritesST.c.s
 .PHONY : src/dat_spritesST.c.s
 
 src/dat_tilesPC.obj: src/dat_tilesPC.c.obj
@@ -1896,7 +1896,7 @@ src/dat_tilesPC.obj: src/dat_tilesPC.c.obj
 
 # target to build an object file
 src/dat_tilesPC.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_tilesPC.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_tilesPC.c.obj
 .PHONY : src/dat_tilesPC.c.obj
 
 src/dat_tilesPC.i: src/dat_tilesPC.c.i
@@ -1905,7 +1905,7 @@ src/dat_tilesPC.i: src/dat_tilesPC.c.i
 
 # target to preprocess a source file
 src/dat_tilesPC.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_tilesPC.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_tilesPC.c.i
 .PHONY : src/dat_tilesPC.c.i
 
 src/dat_tilesPC.s: src/dat_tilesPC.c.s
@@ -1914,7 +1914,7 @@ src/dat_tilesPC.s: src/dat_tilesPC.c.s
 
 # target to generate assembly for a file
 src/dat_tilesPC.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_tilesPC.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_tilesPC.c.s
 .PHONY : src/dat_tilesPC.c.s
 
 src/dat_tilesST.obj: src/dat_tilesST.c.obj
@@ -1923,7 +1923,7 @@ src/dat_tilesST.obj: src/dat_tilesST.c.obj
 
 # target to build an object file
 src/dat_tilesST.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_tilesST.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_tilesST.c.obj
 .PHONY : src/dat_tilesST.c.obj
 
 src/dat_tilesST.i: src/dat_tilesST.c.i
@@ -1932,7 +1932,7 @@ src/dat_tilesST.i: src/dat_tilesST.c.i
 
 # target to preprocess a source file
 src/dat_tilesST.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_tilesST.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_tilesST.c.i
 .PHONY : src/dat_tilesST.c.i
 
 src/dat_tilesST.s: src/dat_tilesST.c.s
@@ -1941,7 +1941,7 @@ src/dat_tilesST.s: src/dat_tilesST.c.s
 
 # target to generate assembly for a file
 src/dat_tilesST.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/dat_tilesST.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/dat_tilesST.c.s
 .PHONY : src/dat_tilesST.c.s
 
 src/devtools.obj: src/devtools.c.obj
@@ -1950,7 +1950,7 @@ src/devtools.obj: src/devtools.c.obj
 
 # target to build an object file
 src/devtools.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/devtools.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/devtools.c.obj
 .PHONY : src/devtools.c.obj
 
 src/devtools.i: src/devtools.c.i
@@ -1959,7 +1959,7 @@ src/devtools.i: src/devtools.c.i
 
 # target to preprocess a source file
 src/devtools.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/devtools.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/devtools.c.i
 .PHONY : src/devtools.c.i
 
 src/devtools.s: src/devtools.c.s
@@ -1968,7 +1968,7 @@ src/devtools.s: src/devtools.c.s
 
 # target to generate assembly for a file
 src/devtools.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/devtools.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/devtools.c.s
 .PHONY : src/devtools.c.s
 
 src/draw.obj: src/draw.c.obj
@@ -1977,7 +1977,7 @@ src/draw.obj: src/draw.c.obj
 
 # target to build an object file
 src/draw.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/draw.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/draw.c.obj
 .PHONY : src/draw.c.obj
 
 src/draw.i: src/draw.c.i
@@ -1986,7 +1986,7 @@ src/draw.i: src/draw.c.i
 
 # target to preprocess a source file
 src/draw.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/draw.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/draw.c.i
 .PHONY : src/draw.c.i
 
 src/draw.s: src/draw.c.s
@@ -1995,7 +1995,7 @@ src/draw.s: src/draw.c.s
 
 # target to generate assembly for a file
 src/draw.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/draw.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/draw.c.s
 .PHONY : src/draw.c.s
 
 src/e_bomb.obj: src/e_bomb.c.obj
@@ -2004,7 +2004,7 @@ src/e_bomb.obj: src/e_bomb.c.obj
 
 # target to build an object file
 src/e_bomb.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bomb.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bomb.c.obj
 .PHONY : src/e_bomb.c.obj
 
 src/e_bomb.i: src/e_bomb.c.i
@@ -2013,7 +2013,7 @@ src/e_bomb.i: src/e_bomb.c.i
 
 # target to preprocess a source file
 src/e_bomb.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bomb.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bomb.c.i
 .PHONY : src/e_bomb.c.i
 
 src/e_bomb.s: src/e_bomb.c.s
@@ -2022,7 +2022,7 @@ src/e_bomb.s: src/e_bomb.c.s
 
 # target to generate assembly for a file
 src/e_bomb.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bomb.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bomb.c.s
 .PHONY : src/e_bomb.c.s
 
 src/e_bonus.obj: src/e_bonus.c.obj
@@ -2031,7 +2031,7 @@ src/e_bonus.obj: src/e_bonus.c.obj
 
 # target to build an object file
 src/e_bonus.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bonus.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bonus.c.obj
 .PHONY : src/e_bonus.c.obj
 
 src/e_bonus.i: src/e_bonus.c.i
@@ -2040,7 +2040,7 @@ src/e_bonus.i: src/e_bonus.c.i
 
 # target to preprocess a source file
 src/e_bonus.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bonus.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bonus.c.i
 .PHONY : src/e_bonus.c.i
 
 src/e_bonus.s: src/e_bonus.c.s
@@ -2049,7 +2049,7 @@ src/e_bonus.s: src/e_bonus.c.s
 
 # target to generate assembly for a file
 src/e_bonus.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bonus.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bonus.c.s
 .PHONY : src/e_bonus.c.s
 
 src/e_box.obj: src/e_box.c.obj
@@ -2058,7 +2058,7 @@ src/e_box.obj: src/e_box.c.obj
 
 # target to build an object file
 src/e_box.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_box.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_box.c.obj
 .PHONY : src/e_box.c.obj
 
 src/e_box.i: src/e_box.c.i
@@ -2067,7 +2067,7 @@ src/e_box.i: src/e_box.c.i
 
 # target to preprocess a source file
 src/e_box.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_box.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_box.c.i
 .PHONY : src/e_box.c.i
 
 src/e_box.s: src/e_box.c.s
@@ -2076,7 +2076,7 @@ src/e_box.s: src/e_box.c.s
 
 # target to generate assembly for a file
 src/e_box.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_box.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_box.c.s
 .PHONY : src/e_box.c.s
 
 src/e_bullet.obj: src/e_bullet.c.obj
@@ -2085,7 +2085,7 @@ src/e_bullet.obj: src/e_bullet.c.obj
 
 # target to build an object file
 src/e_bullet.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bullet.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bullet.c.obj
 .PHONY : src/e_bullet.c.obj
 
 src/e_bullet.i: src/e_bullet.c.i
@@ -2094,7 +2094,7 @@ src/e_bullet.i: src/e_bullet.c.i
 
 # target to preprocess a source file
 src/e_bullet.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bullet.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bullet.c.i
 .PHONY : src/e_bullet.c.i
 
 src/e_bullet.s: src/e_bullet.c.s
@@ -2103,7 +2103,7 @@ src/e_bullet.s: src/e_bullet.c.s
 
 # target to generate assembly for a file
 src/e_bullet.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_bullet.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_bullet.c.s
 .PHONY : src/e_bullet.c.s
 
 src/e_rick.obj: src/e_rick.c.obj
@@ -2112,7 +2112,7 @@ src/e_rick.obj: src/e_rick.c.obj
 
 # target to build an object file
 src/e_rick.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_rick.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_rick.c.obj
 .PHONY : src/e_rick.c.obj
 
 src/e_rick.i: src/e_rick.c.i
@@ -2121,7 +2121,7 @@ src/e_rick.i: src/e_rick.c.i
 
 # target to preprocess a source file
 src/e_rick.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_rick.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_rick.c.i
 .PHONY : src/e_rick.c.i
 
 src/e_rick.s: src/e_rick.c.s
@@ -2130,7 +2130,7 @@ src/e_rick.s: src/e_rick.c.s
 
 # target to generate assembly for a file
 src/e_rick.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_rick.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_rick.c.s
 .PHONY : src/e_rick.c.s
 
 src/e_sbonus.obj: src/e_sbonus.c.obj
@@ -2139,7 +2139,7 @@ src/e_sbonus.obj: src/e_sbonus.c.obj
 
 # target to build an object file
 src/e_sbonus.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_sbonus.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_sbonus.c.obj
 .PHONY : src/e_sbonus.c.obj
 
 src/e_sbonus.i: src/e_sbonus.c.i
@@ -2148,7 +2148,7 @@ src/e_sbonus.i: src/e_sbonus.c.i
 
 # target to preprocess a source file
 src/e_sbonus.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_sbonus.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_sbonus.c.i
 .PHONY : src/e_sbonus.c.i
 
 src/e_sbonus.s: src/e_sbonus.c.s
@@ -2157,7 +2157,7 @@ src/e_sbonus.s: src/e_sbonus.c.s
 
 # target to generate assembly for a file
 src/e_sbonus.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_sbonus.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_sbonus.c.s
 .PHONY : src/e_sbonus.c.s
 
 src/e_them.obj: src/e_them.c.obj
@@ -2166,7 +2166,7 @@ src/e_them.obj: src/e_them.c.obj
 
 # target to build an object file
 src/e_them.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_them.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_them.c.obj
 .PHONY : src/e_them.c.obj
 
 src/e_them.i: src/e_them.c.i
@@ -2175,7 +2175,7 @@ src/e_them.i: src/e_them.c.i
 
 # target to preprocess a source file
 src/e_them.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_them.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_them.c.i
 .PHONY : src/e_them.c.i
 
 src/e_them.s: src/e_them.c.s
@@ -2184,7 +2184,7 @@ src/e_them.s: src/e_them.c.s
 
 # target to generate assembly for a file
 src/e_them.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/e_them.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/e_them.c.s
 .PHONY : src/e_them.c.s
 
 src/ents.obj: src/ents.c.obj
@@ -2193,7 +2193,7 @@ src/ents.obj: src/ents.c.obj
 
 # target to build an object file
 src/ents.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/ents.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/ents.c.obj
 .PHONY : src/ents.c.obj
 
 src/ents.i: src/ents.c.i
@@ -2202,7 +2202,7 @@ src/ents.i: src/ents.c.i
 
 # target to preprocess a source file
 src/ents.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/ents.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/ents.c.i
 .PHONY : src/ents.c.i
 
 src/ents.s: src/ents.c.s
@@ -2211,7 +2211,7 @@ src/ents.s: src/ents.c.s
 
 # target to generate assembly for a file
 src/ents.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/ents.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/ents.c.s
 .PHONY : src/ents.c.s
 
 src/game.obj: src/game.c.obj
@@ -2220,7 +2220,7 @@ src/game.obj: src/game.c.obj
 
 # target to build an object file
 src/game.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/game.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/game.c.obj
 .PHONY : src/game.c.obj
 
 src/game.i: src/game.c.i
@@ -2229,7 +2229,7 @@ src/game.i: src/game.c.i
 
 # target to preprocess a source file
 src/game.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/game.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/game.c.i
 .PHONY : src/game.c.i
 
 src/game.s: src/game.c.s
@@ -2238,7 +2238,7 @@ src/game.s: src/game.c.s
 
 # target to generate assembly for a file
 src/game.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/game.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/game.c.s
 .PHONY : src/game.c.s
 
 src/main.obj: src/main.cpp.obj
@@ -2247,7 +2247,7 @@ src/main.obj: src/main.cpp.obj
 
 # target to build an object file
 src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/main.cpp.obj
 .PHONY : src/main.cpp.obj
 
 src/main.i: src/main.cpp.i
@@ -2256,7 +2256,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -2265,7 +2265,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/maps.obj: src/maps.c.obj
@@ -2274,7 +2274,7 @@ src/maps.obj: src/maps.c.obj
 
 # target to build an object file
 src/maps.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/maps.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/maps.c.obj
 .PHONY : src/maps.c.obj
 
 src/maps.i: src/maps.c.i
@@ -2283,7 +2283,7 @@ src/maps.i: src/maps.c.i
 
 # target to preprocess a source file
 src/maps.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/maps.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/maps.c.i
 .PHONY : src/maps.c.i
 
 src/maps.s: src/maps.c.s
@@ -2292,7 +2292,7 @@ src/maps.s: src/maps.c.s
 
 # target to generate assembly for a file
 src/maps.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/maps.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/maps.c.s
 .PHONY : src/maps.c.s
 
 src/rects.obj: src/rects.c.obj
@@ -2301,7 +2301,7 @@ src/rects.obj: src/rects.c.obj
 
 # target to build an object file
 src/rects.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/rects.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/rects.c.obj
 .PHONY : src/rects.c.obj
 
 src/rects.i: src/rects.c.i
@@ -2310,7 +2310,7 @@ src/rects.i: src/rects.c.i
 
 # target to preprocess a source file
 src/rects.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/rects.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/rects.c.i
 .PHONY : src/rects.c.i
 
 src/rects.s: src/rects.c.s
@@ -2319,7 +2319,7 @@ src/rects.s: src/rects.c.s
 
 # target to generate assembly for a file
 src/rects.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/rects.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/rects.c.s
 .PHONY : src/rects.c.s
 
 src/scr_gameover.obj: src/scr_gameover.c.obj
@@ -2328,7 +2328,7 @@ src/scr_gameover.obj: src/scr_gameover.c.obj
 
 # target to build an object file
 src/scr_gameover.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_gameover.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_gameover.c.obj
 .PHONY : src/scr_gameover.c.obj
 
 src/scr_gameover.i: src/scr_gameover.c.i
@@ -2337,7 +2337,7 @@ src/scr_gameover.i: src/scr_gameover.c.i
 
 # target to preprocess a source file
 src/scr_gameover.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_gameover.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_gameover.c.i
 .PHONY : src/scr_gameover.c.i
 
 src/scr_gameover.s: src/scr_gameover.c.s
@@ -2346,7 +2346,7 @@ src/scr_gameover.s: src/scr_gameover.c.s
 
 # target to generate assembly for a file
 src/scr_gameover.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_gameover.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_gameover.c.s
 .PHONY : src/scr_gameover.c.s
 
 src/scr_getname.obj: src/scr_getname.c.obj
@@ -2355,7 +2355,7 @@ src/scr_getname.obj: src/scr_getname.c.obj
 
 # target to build an object file
 src/scr_getname.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_getname.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_getname.c.obj
 .PHONY : src/scr_getname.c.obj
 
 src/scr_getname.i: src/scr_getname.c.i
@@ -2364,7 +2364,7 @@ src/scr_getname.i: src/scr_getname.c.i
 
 # target to preprocess a source file
 src/scr_getname.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_getname.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_getname.c.i
 .PHONY : src/scr_getname.c.i
 
 src/scr_getname.s: src/scr_getname.c.s
@@ -2373,7 +2373,7 @@ src/scr_getname.s: src/scr_getname.c.s
 
 # target to generate assembly for a file
 src/scr_getname.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_getname.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_getname.c.s
 .PHONY : src/scr_getname.c.s
 
 src/scr_imain.obj: src/scr_imain.c.obj
@@ -2382,7 +2382,7 @@ src/scr_imain.obj: src/scr_imain.c.obj
 
 # target to build an object file
 src/scr_imain.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imain.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_imain.c.obj
 .PHONY : src/scr_imain.c.obj
 
 src/scr_imain.i: src/scr_imain.c.i
@@ -2391,7 +2391,7 @@ src/scr_imain.i: src/scr_imain.c.i
 
 # target to preprocess a source file
 src/scr_imain.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imain.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_imain.c.i
 .PHONY : src/scr_imain.c.i
 
 src/scr_imain.s: src/scr_imain.c.s
@@ -2400,7 +2400,7 @@ src/scr_imain.s: src/scr_imain.c.s
 
 # target to generate assembly for a file
 src/scr_imain.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imain.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_imain.c.s
 .PHONY : src/scr_imain.c.s
 
 src/scr_imap.obj: src/scr_imap.c.obj
@@ -2409,7 +2409,7 @@ src/scr_imap.obj: src/scr_imap.c.obj
 
 # target to build an object file
 src/scr_imap.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imap.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_imap.c.obj
 .PHONY : src/scr_imap.c.obj
 
 src/scr_imap.i: src/scr_imap.c.i
@@ -2418,7 +2418,7 @@ src/scr_imap.i: src/scr_imap.c.i
 
 # target to preprocess a source file
 src/scr_imap.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imap.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_imap.c.i
 .PHONY : src/scr_imap.c.i
 
 src/scr_imap.s: src/scr_imap.c.s
@@ -2427,7 +2427,7 @@ src/scr_imap.s: src/scr_imap.c.s
 
 # target to generate assembly for a file
 src/scr_imap.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_imap.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_imap.c.s
 .PHONY : src/scr_imap.c.s
 
 src/scr_pause.obj: src/scr_pause.c.obj
@@ -2436,7 +2436,7 @@ src/scr_pause.obj: src/scr_pause.c.obj
 
 # target to build an object file
 src/scr_pause.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_pause.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_pause.c.obj
 .PHONY : src/scr_pause.c.obj
 
 src/scr_pause.i: src/scr_pause.c.i
@@ -2445,7 +2445,7 @@ src/scr_pause.i: src/scr_pause.c.i
 
 # target to preprocess a source file
 src/scr_pause.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_pause.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_pause.c.i
 .PHONY : src/scr_pause.c.i
 
 src/scr_pause.s: src/scr_pause.c.s
@@ -2454,7 +2454,7 @@ src/scr_pause.s: src/scr_pause.c.s
 
 # target to generate assembly for a file
 src/scr_pause.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_pause.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_pause.c.s
 .PHONY : src/scr_pause.c.s
 
 src/scr_xrick.obj: src/scr_xrick.c.obj
@@ -2463,7 +2463,7 @@ src/scr_xrick.obj: src/scr_xrick.c.obj
 
 # target to build an object file
 src/scr_xrick.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_xrick.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_xrick.c.obj
 .PHONY : src/scr_xrick.c.obj
 
 src/scr_xrick.i: src/scr_xrick.c.i
@@ -2472,7 +2472,7 @@ src/scr_xrick.i: src/scr_xrick.c.i
 
 # target to preprocess a source file
 src/scr_xrick.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_xrick.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_xrick.c.i
 .PHONY : src/scr_xrick.c.i
 
 src/scr_xrick.s: src/scr_xrick.c.s
@@ -2481,7 +2481,7 @@ src/scr_xrick.s: src/scr_xrick.c.s
 
 # target to generate assembly for a file
 src/scr_xrick.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scr_xrick.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_xrick.c.s
 .PHONY : src/scr_xrick.c.s
 
 src/scroller.obj: src/scroller.c.obj
@@ -2490,7 +2490,7 @@ src/scroller.obj: src/scroller.c.obj
 
 # target to build an object file
 src/scroller.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scroller.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scroller.c.obj
 .PHONY : src/scroller.c.obj
 
 src/scroller.i: src/scroller.c.i
@@ -2499,7 +2499,7 @@ src/scroller.i: src/scroller.c.i
 
 # target to preprocess a source file
 src/scroller.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scroller.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scroller.c.i
 .PHONY : src/scroller.c.i
 
 src/scroller.s: src/scroller.c.s
@@ -2508,7 +2508,7 @@ src/scroller.s: src/scroller.c.s
 
 # target to generate assembly for a file
 src/scroller.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/scroller.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scroller.c.s
 .PHONY : src/scroller.c.s
 
 src/sysarg.obj: src/sysarg.c.obj
@@ -2517,7 +2517,7 @@ src/sysarg.obj: src/sysarg.c.obj
 
 # target to build an object file
 src/sysarg.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysarg.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysarg.c.obj
 .PHONY : src/sysarg.c.obj
 
 src/sysarg.i: src/sysarg.c.i
@@ -2526,7 +2526,7 @@ src/sysarg.i: src/sysarg.c.i
 
 # target to preprocess a source file
 src/sysarg.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysarg.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysarg.c.i
 .PHONY : src/sysarg.c.i
 
 src/sysarg.s: src/sysarg.c.s
@@ -2535,7 +2535,7 @@ src/sysarg.s: src/sysarg.c.s
 
 # target to generate assembly for a file
 src/sysarg.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysarg.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysarg.c.s
 .PHONY : src/sysarg.c.s
 
 src/sysevt.obj: src/sysevt.cpp.obj
@@ -2544,7 +2544,7 @@ src/sysevt.obj: src/sysevt.cpp.obj
 
 # target to build an object file
 src/sysevt.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysevt.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysevt.cpp.obj
 .PHONY : src/sysevt.cpp.obj
 
 src/sysevt.i: src/sysevt.cpp.i
@@ -2553,7 +2553,7 @@ src/sysevt.i: src/sysevt.cpp.i
 
 # target to preprocess a source file
 src/sysevt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysevt.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysevt.cpp.i
 .PHONY : src/sysevt.cpp.i
 
 src/sysevt.s: src/sysevt.cpp.s
@@ -2562,7 +2562,7 @@ src/sysevt.s: src/sysevt.cpp.s
 
 # target to generate assembly for a file
 src/sysevt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysevt.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysevt.cpp.s
 .PHONY : src/sysevt.cpp.s
 
 src/sysjoy.obj: src/sysjoy.c.obj
@@ -2571,7 +2571,7 @@ src/sysjoy.obj: src/sysjoy.c.obj
 
 # target to build an object file
 src/sysjoy.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysjoy.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysjoy.c.obj
 .PHONY : src/sysjoy.c.obj
 
 src/sysjoy.i: src/sysjoy.c.i
@@ -2580,7 +2580,7 @@ src/sysjoy.i: src/sysjoy.c.i
 
 # target to preprocess a source file
 src/sysjoy.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysjoy.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysjoy.c.i
 .PHONY : src/sysjoy.c.i
 
 src/sysjoy.s: src/sysjoy.c.s
@@ -2589,7 +2589,7 @@ src/sysjoy.s: src/sysjoy.c.s
 
 # target to generate assembly for a file
 src/sysjoy.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysjoy.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysjoy.c.s
 .PHONY : src/sysjoy.c.s
 
 src/syskbd.obj: src/syskbd.c.obj
@@ -2598,7 +2598,7 @@ src/syskbd.obj: src/syskbd.c.obj
 
 # target to build an object file
 src/syskbd.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/syskbd.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syskbd.c.obj
 .PHONY : src/syskbd.c.obj
 
 src/syskbd.i: src/syskbd.c.i
@@ -2607,7 +2607,7 @@ src/syskbd.i: src/syskbd.c.i
 
 # target to preprocess a source file
 src/syskbd.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/syskbd.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syskbd.c.i
 .PHONY : src/syskbd.c.i
 
 src/syskbd.s: src/syskbd.c.s
@@ -2616,7 +2616,7 @@ src/syskbd.s: src/syskbd.c.s
 
 # target to generate assembly for a file
 src/syskbd.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/syskbd.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syskbd.c.s
 .PHONY : src/syskbd.c.s
 
 src/system.obj: src/system.cpp.obj
@@ -2625,7 +2625,7 @@ src/system.obj: src/system.cpp.obj
 
 # target to build an object file
 src/system.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/system.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/system.cpp.obj
 .PHONY : src/system.cpp.obj
 
 src/system.i: src/system.cpp.i
@@ -2634,7 +2634,7 @@ src/system.i: src/system.cpp.i
 
 # target to preprocess a source file
 src/system.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/system.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/system.cpp.i
 .PHONY : src/system.cpp.i
 
 src/system.s: src/system.cpp.s
@@ -2643,7 +2643,7 @@ src/system.s: src/system.cpp.s
 
 # target to generate assembly for a file
 src/system.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/system.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/system.cpp.s
 .PHONY : src/system.cpp.s
 
 src/sysvid.obj: src/sysvid.cpp.obj
@@ -2652,7 +2652,7 @@ src/sysvid.obj: src/sysvid.cpp.obj
 
 # target to build an object file
 src/sysvid.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysvid.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysvid.cpp.obj
 .PHONY : src/sysvid.cpp.obj
 
 src/sysvid.i: src/sysvid.cpp.i
@@ -2661,7 +2661,7 @@ src/sysvid.i: src/sysvid.cpp.i
 
 # target to preprocess a source file
 src/sysvid.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysvid.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysvid.cpp.i
 .PHONY : src/sysvid.cpp.i
 
 src/sysvid.s: src/sysvid.cpp.s
@@ -2670,7 +2670,7 @@ src/sysvid.s: src/sysvid.cpp.s
 
 # target to generate assembly for a file
 src/sysvid.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/sysvid.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/sysvid.cpp.s
 .PHONY : src/sysvid.cpp.s
 
 src/util.obj: src/util.c.obj
@@ -2679,7 +2679,7 @@ src/util.obj: src/util.c.obj
 
 # target to build an object file
 src/util.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/util.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/util.c.obj
 .PHONY : src/util.c.obj
 
 src/util.i: src/util.c.i
@@ -2688,7 +2688,7 @@ src/util.i: src/util.c.i
 
 # target to preprocess a source file
 src/util.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/util.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/util.c.i
 .PHONY : src/util.c.i
 
 src/util.s: src/util.c.s
@@ -2697,7 +2697,7 @@ src/util.s: src/util.c.s
 
 # target to generate assembly for a file
 src/util.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/util.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/util.c.s
 .PHONY : src/util.c.s
 
 src/xrick.obj: src/xrick.c.obj
@@ -2706,7 +2706,7 @@ src/xrick.obj: src/xrick.c.obj
 
 # target to build an object file
 src/xrick.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/xrick.c.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/xrick.c.obj
 .PHONY : src/xrick.c.obj
 
 src/xrick.i: src/xrick.c.i
@@ -2715,7 +2715,7 @@ src/xrick.i: src/xrick.c.i
 
 # target to preprocess a source file
 src/xrick.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/xrick.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/xrick.c.i
 .PHONY : src/xrick.c.i
 
 src/xrick.s: src/xrick.c.s
@@ -2724,7 +2724,7 @@ src/xrick.s: src/xrick.c.s
 
 # target to generate assembly for a file
 src/xrick.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/my_project.dir/build.make CMakeFiles/my_project.dir/src/xrick.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/xrick.c.s
 .PHONY : src/xrick.c.s
 
 # Help Target
@@ -2746,7 +2746,7 @@ help:
 	@echo "... picosystem_screen_double_pio_h"
 	@echo "... picosystem_screen_pio_h"
 	@echo "... bs2_default"
-	@echo "... my_project"
+	@echo "... picorick"
 	@echo "... home/pi/pico-sdk/src/common/pico_sync/critical_section.obj"
 	@echo "... home/pi/pico-sdk/src/common/pico_sync/critical_section.i"
 	@echo "... home/pi/pico-sdk/src/common/pico_sync/critical_section.s"

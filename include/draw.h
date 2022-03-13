@@ -47,7 +47,7 @@ extern void draw_drawStatus(void);
 extern void draw_clearStatus(void);
 extern void draw_pic(U16, U16, U16, U16, U32 *);
 extern void draw_infos(void);
-extern void draw_img(img_t *);
+extern void draw_img_fullscreen(img_t *);
 
 #endif
 

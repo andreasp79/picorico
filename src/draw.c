@@ -668,8 +668,11 @@ draw_pic(U16 x, U16 y, U16 w, U16 h, U32 *pic)
  * Draw a bitmap
  */
 void
-draw_img(img_t *i)
+draw_img_fullscreen(img_t *i)
 {
+  if (i->w != SYSVID_WIDTH || i->h != SYSVID_HEIGHT)
+    return;
+
   U16 k;
 
   draw_setfb(0, 0);

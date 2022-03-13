@@ -30,7 +30,7 @@ extern "C"
 #include "control.h"
 #include "draw.h"
 
-
+extern void PlayTuneLow();
 
 #define SYSJOY_RANGE 3280
 
@@ -109,6 +109,7 @@ static int processEvents()
       control_last = CONTROL_EXIT;
     }
     else if (KeyBpWentDown) {
+      PlayTuneLow();
       SETBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }

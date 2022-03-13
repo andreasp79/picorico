@@ -34,7 +34,7 @@ screen_xrick(void)
 
 	if (seq == 0) {
 		sysvid_clear();
-		draw_img(IMG_SPLASH);
+		draw_img_fullscreen(IMG_SPLASH);
 		game_rects = &draw_SCREENRECT;
 		seq = 1;
 	}

@@ -21,17 +21,25 @@
 
 #include "picosystem.hpp"
 
+
 extern "C"
 {
+extern void PlayTuneLow();
 
 #include "system.h"
 
 /*
  * Panic
  */
+
+
 void
 sys_panic(char *err)
 {
+  while(true)
+  {
+    PlayTuneLow();
+  }
   #if 0
   va_list argptr;
   char s[1024];

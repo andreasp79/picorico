@@ -84,10 +84,10 @@ extern void sys_sleep(int);
 /*
  * video section
  */
-#define SYSVID_ZOOM 2
-#define SYSVID_MAXZOOM 4
-#define SYSVID_WIDTH 240
-#define SYSVID_HEIGHT 200
+#define SYSVID_ZOOM 1
+#define SYSVID_MAXZOOM 1
+#define SYSVID_WIDTH 120
+#define SYSVID_HEIGHT 120
 
 extern void sysvid_init(void);
 extern void sysvid_shutdown(void);

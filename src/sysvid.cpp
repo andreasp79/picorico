@@ -14,8 +14,14 @@
 #include "picosystem.hpp"
 #include <cstring>
 
+
+ 
  extern "C"
  {
+
+   extern void PlayTuneHigh();
+ extern void PlayTuneLow();
+ extern void PlayTuneSuperHigh();
 
 #include <stdlib.h> /* malloc */
 
@@ -76,7 +82,6 @@ static U8 zoom = SYSVID_ZOOM; /* actual zoom level */
 static U8 szoom = 0;  /* saved zoom level */
 static U8 fszoom = 0;  /* fullscreen zoom level */
 
-#include "img_icon.e"
 
 /*
  * color tables
@@ -219,13 +224,33 @@ sysvid_chkvm(void)
 /*
  * Initialise video
  */
+ 
+
 void
 sysvid_init(void)
 {
-  sysvid_fb = (U8*)malloc(SYSVID_WIDTH * SYSVID_HEIGHT);
-  if (!sysvid_fb)
-    sys_panic("xrick/video: sysvid_fb malloc failed\n");
+  //PlayTuneSuperHigh();
 
+  sysvid_fb = (U8*)malloc(SYSVID_WIDTH * SYSVID_HEIGHT);
+
+  //PlayTuneSuperHigh();
+
+  if (!sysvid_fb)
+  {
+    for (int i = 0; i < 5; ++i)
+    {
+      //PlayTuneLow();
+    }
+    sys_panic("xrick/video: sysvid_fb malloc failed\n");
+  }
+  else
+  {
+    for (int i = 0; i < 3; ++i)
+    {
+      //PlayTuneHigh();
+    }
+    
+  }
   #if 0
   SDL_Surface *s;
   U8 *mask, tpix;
@@ -347,8 +372,10 @@ sysvid_update(rect_t *rects)
 	p = p0;
 	q = q0;
 	for (x = rects->x; x < rects->x + rects->width; x++) {
-	  for (xz = 0; xz < zoom; xz++) {
-	    *q = *p;
+	  for (xz = 0; xz < zoom; xz++) 
+    {
+      U16 target = 0xF000 | ((U16)(*p));
+	    *q = target;
 	    q++;
 	  }
 	  p++;
