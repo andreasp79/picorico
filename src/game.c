@@ -39,7 +39,7 @@ typedef enum {
 #ifdef ENABLE_DEVTOOLS
   DEVTOOLS,
 #endif
-  XRICK,
+  //XRICK,
   INIT_GAME, INIT_BUFFER,
   INTRO_MAIN, INTRO_MAP,
   PAUSE_PRESSED1, PAUSE_PRESSED1B, PAUSED, PAUSE_PRESSED2,
@@ -211,7 +211,9 @@ U32 tm, tmx;
 	loaddata(); /* load cached data */
 	game_period = GAME_PERIOD;
 	tm = sys_gettime();
-	game_state = XRICK;
+	game_state = INIT_GAME;
+	sysvid_clear();
+    sysvid_setGamePalette();
  }
 
  int game_update()
@@ -286,7 +288,7 @@ frame(void)
 
 
 
-		case XRICK:
+		/*case XRICK:
 			switch(screen_xrick()) {
 			case SCREEN_RUNNING:
 				return;
@@ -301,7 +303,7 @@ frame(void)
 				game_state = EXIT;
 				return;
 			}
-		break;
+		break;*/
 
 
 

@@ -2457,33 +2457,6 @@ src/scr_pause.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_pause.c.s
 .PHONY : src/scr_pause.c.s
 
-src/scr_xrick.obj: src/scr_xrick.c.obj
-
-.PHONY : src/scr_xrick.obj
-
-# target to build an object file
-src/scr_xrick.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_xrick.c.obj
-.PHONY : src/scr_xrick.c.obj
-
-src/scr_xrick.i: src/scr_xrick.c.i
-
-.PHONY : src/scr_xrick.i
-
-# target to preprocess a source file
-src/scr_xrick.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_xrick.c.i
-.PHONY : src/scr_xrick.c.i
-
-src/scr_xrick.s: src/scr_xrick.c.s
-
-.PHONY : src/scr_xrick.s
-
-# target to generate assembly for a file
-src/scr_xrick.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/scr_xrick.c.s
-.PHONY : src/scr_xrick.c.s
-
 src/scroller.obj: src/scroller.c.obj
 
 .PHONY : src/scroller.obj
@@ -2989,9 +2962,6 @@ help:
 	@echo "... src/scr_pause.obj"
 	@echo "... src/scr_pause.i"
 	@echo "... src/scr_pause.s"
-	@echo "... src/scr_xrick.obj"
-	@echo "... src/scr_xrick.i"
-	@echo "... src/scr_xrick.s"
 	@echo "... src/scroller.obj"
 	@echo "... src/scroller.i"
 	@echo "... src/scroller.s"

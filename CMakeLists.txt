@@ -29,7 +29,6 @@ set(PROJECT_SOURCES
     src/e_them.c
     src/ents.c
     src/game.c
-    src/img_splash.e
     src/maps.c
     src/rects.c
     src/scr_gameover.c
@@ -37,7 +36,6 @@ set(PROJECT_SOURCES
     src/scr_imap.c
     src/scr_imain.c
     src/scr_pause.c
-    src/scr_xrick.c
     src/scroller.c
     src/sdlcodes.e
     src/sysarg.c
