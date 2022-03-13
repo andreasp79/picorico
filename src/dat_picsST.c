@@ -18,7 +18,7 @@
 #include "system.h"
 #include "pics.h"
 
-U32 pic_congrats[] =
+const U32 pic_congrats[] =
 {
   0000000000,
   0000000000,
