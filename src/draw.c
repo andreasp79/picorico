@@ -65,11 +65,7 @@
 #endif
 #define DRAW_STATUS_BULLETS_X 0x68
 #define DRAW_STATUS_BOMBS_X 0xA8
-#ifdef GFXST
-#define DRAW_STATUS_SCORE_X 0x20
-#define DRAW_STATUS_LIVES_X 0xF0
-#define DRAW_STATUS_Y 0
-#endif
+
 
 
 /*
@@ -102,7 +98,11 @@ static U8 *fb;     /* frame buffer pointer */
 void
 draw_setfb(U16 x, U16 y)
 {
+#ifdef HALFRES
+  fb = sysvid_fb + (x/2) + ((y/2) * SYSVID_WIDTH);
+#else
   fb = sysvid_fb + x + y * SYSVID_WIDTH;
+#endif
 }
 
 
@@ -167,8 +167,15 @@ draw_tilesList(void)
   U8 *t;
 
   t = fb;
-  while (draw_tilesSubList() != 0xFE) {  /* draw sub-list */
+  while (draw_tilesSubList() != 0xFE)
+  {
+    /* draw sub-list */
+#ifdef HALFRES
+    t += 4 * SYSVID_WIDTH;
+#else
     t += 8 * SYSVID_WIDTH;  /* go down one tile i.e. 8 lines */
+#endif
+      
     fb = t;
   }
 }
@@ -230,12 +237,17 @@ draw_tile(U8 tileNumber)
   U16 x;
 #endif
 
-#ifdef GFXST
-  U32 x;
+
+#ifdef HALFRES
+    int numLines = 4;
+#else
+    int numLines = 8;
 #endif
 
   f = fb;  /* frame buffer */
-  for (i = 0; i < 8; i++) {  /* for all 8 pixel lines */
+  for (i = 0; i < numLines; i++) 
+  {  
+    /* for all 8 pixel lines */
 
 #ifdef GFXPC
     x = tiles_data[draw_tilesBank][tileNumber][i] & draw_filter;
@@ -248,20 +260,14 @@ draw_tile(U8 tileNumber)
     f += SYSVID_WIDTH;  /* next line */
 #endif
 
-#ifdef GFXST
-  x = tiles_data[draw_tilesBank][tileNumber][i];
-  /*
-   * tiles / perform the transformation from ST 4 bits
-   * per pixel to frame buffer 8 bits per pixels
-   */
-  for (k = 8; k--; x >>= 4)
-    f[k] = x & 0x0F;
-  f += SYSVID_WIDTH;  /* next line */
-#endif
 
   }
 
+#ifdef HALFRES
+    fb += 4;
+#else
   fb += 8;  /* next tile */
+#endif
 }
 
 /*
@@ -300,110 +306,6 @@ draw_sprite(U8 nbr, U16 x, U16 y)
 #endif
 
 
-/*
- * Draw a sprite
- *
- * foobar
- */
-#ifdef GFXST
-void
-draw_sprite(U8 number, U16 x, U16 y)
-{
-  U8 i, j, k, *f;
-  U16 g;
-  U32 d;
-
-  draw_setfb(x, y);
-  g = 0;
-  for (i = 0; i < 0x15; i++) { /* rows */
-    f = fb;
-    for (j = 0; j < 4; j++) { /* cols */
-      d = sprites_data[number][g++];
-      for (k = 8; k--; d >>= 4)
-	if (d & 0x0F) f[k] = (f[k] & 0xF0) | (d & 0x0F);
-      f += 8;
-    }
-    fb += SYSVID_WIDTH;
-  }
-}
-#endif
-
-
-/*
- * Draw a sprite
- *
- * NOTE re-using original ST graphics format
- */
-#ifdef GFXST
-void
-draw_sprite2(U8 number, U16 x, U16 y, U8 front)
-{
-  U32 d = 0;   /* sprite data */
-  S16 x0, y0;  /* clipped x, y */
-  U16 w, h;    /* width, height */
-  S16 g,       /* sprite data offset*/
-    r, c,      /* row, column */
-    i,         /* frame buffer shifter */
-    im;        /* tile flag shifter */
-  U8 flg;      /* tile flag */
-
-  x0 = x;
-  y0 = y;
-  w = 0x20;
-  h = 0x15;
-
-  if (draw_clipms(&x0, &y0, &w, &h))  /* return if not visible */
-    return;
-
-  g = 0;
-  draw_setfb(x0 - DRAW_XYMAP_SCRLEFT, y0 - DRAW_XYMAP_SCRTOP + 8);
-
-  for (r = 0; r < 0x15; r++) {
-    if (r >= h || y + r < y0) continue;
-
-    i = 0x1f;
-    im = x - (x & 0xfff8);
-    flg = map_eflg[map_map[(y + r) >> 3][(x + 0x1f)>> 3]];
-
-#ifdef ENABLE_CHEATS
-#define LOOP(N, C0, C1) \
-    d = sprites_data[number][g + N]; \
-    for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
-      if (im == 0) { \
-	flg = map_eflg[map_map[(y + r) >> 3][(x + c) >> 3]]; \
-	im = 8; \
-      } \
-      if (c >= w || x + c < x0) continue; \
-      if (!front && !game_cheat3 && (flg & MAP_EFLG_FGND)) continue; \
-      if (d & 0x0F) fb[i] = (fb[i] & 0xF0) | (d & 0x0F); \
-      if (game_cheat3) fb[i] |= 0x10; \
-    }
-#else
-#define LOOP(N, C0, C1) \
-    d = sprites_data[number][g + N]; \
-    for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
-      if (im == 0) { \
-	flg = map_eflg[map_map[(y + r) >> 3][(x + c) >> 3]]; \
-	im = 8; \
-      } \
-      if (!front && (flg & MAP_EFLG_FGND)) continue; \
-      if (c >= w || x + c < x0) continue; \
-      if (d & 0x0F) fb[i] = (fb[i] & 0xF0) | (d & 0x0F); \
-    }
-#endif
-    LOOP(3, 0x1f, 0x18);
-    LOOP(2, 0x17, 0x10);
-    LOOP(1, 0x0f, 0x08);
-    LOOP(0, 0x07, 0x00);
-
-#undef LOOP
-
-    fb += SYSVID_WIDTH;
-    g += 4;
-  }
-}
-
-#endif
 
 
 /*
@@ -462,6 +364,16 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 	}
 	else
 	  xm |= 0xFFFF >> dx;
+
+
+    #ifdef HALFRES
+          
+          for (k = 8; k--; xm >>= 2, xp >>= 2)
+          {
+              f[k/2] = ((f[k] & (xm & 3)) | (xp & 3));
+          }
+#else
+
 	/*
 	 * sprites / perform the transformation from CGA 2 bits
 	 * per pixel to frame buffer 8 bits per pixels
@@ -472,10 +384,18 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 	  if (game_cheat3) f[k] |= 4;
 #endif
 	}
+
+  #endif
       }
       f += SYSVID_WIDTH;
     }
+
+#ifdef HALFRES
+    fb += 4;
+#else
     fb += 8;
+#endif
+
   }
 }
 #endif
@@ -516,9 +436,7 @@ draw_spriteBackground(U16 x, U16 y)
 #ifdef GFXPC
     draw_setfb(xs, ys + r * 8);
 #endif
-#ifdef GFXST
-    draw_setfb(xs, 8 + ys + r * 8);
-#endif
+
     for (c = 0; c < cmax; c++) {  /* for each column */
       draw_tile(map_map[ymap + r][xmap + c]);
     }
@@ -542,9 +460,7 @@ draw_map(void)
 #ifdef GFXPC
     draw_setfb(0x20, (i * 8));
 #endif
-#ifdef GFXST
-    draw_setfb(0x20, 8 + (i * 8));
-#endif
+
     for (j = 0; j < 0x20; j++)  /* 0x20 tiles per row */
       draw_tile(map_map[i + 8][j]);
   }
@@ -622,46 +538,16 @@ draw_clearStatus(void)
 #ifdef GFXPC
   draw_tilesBank = map_tilesBank;
 #endif
-#ifdef GFXST
-  draw_tilesBank = 0;
-#endif
+
   draw_setfb(DRAW_STATUS_SCORE_X, DRAW_STATUS_Y);
   for (i = 0; i < DRAW_STATUS_LIVES_X/8 + 6 - DRAW_STATUS_SCORE_X/8; i++) {
 #ifdef GFXPC
     draw_tile(map_map[MAP_ROW_SCRTOP + (DRAW_STATUS_Y / 8)][i]);
 #endif
-#ifdef GFXST
-    draw_tile('@');
-#endif
+
   }
 }
 
-/*
- * Draw a picture
- */
-#ifdef GFXST
-void
-draw_pic(U16 x, U16 y, U16 w, U16 h, U32 *pic)
-{
-  U8 *f;
-  U16 i, j, k, pp;
-  U32 v;
-
-  draw_setfb(x, y);
-  pp = 0;
-
-  for (i = 0; i < h; i++) { /* rows */
-    f = fb;
-    for (j = 0; j < w; j += 8) {  /* cols */
-      v = pic[pp++];
-      for (k = 8; k--; v >>=4)
-	f[k] = v & 0x0F;
-      f += 8;
-    }
-    fb += SYSVID_WIDTH;
-  }
-}
-#endif
 
 
 /*

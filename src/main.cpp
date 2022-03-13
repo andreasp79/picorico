@@ -90,6 +90,21 @@ void draw(uint32_t tick)
 
   */
 
+/*
+  U16* pScreen = picosystem::SCREEN->data;
+  for (int x = 0; x < 120; ++x)
+  {
+    for (int y = 0; y < 120; ++y)
+    {
+      // 0x00ff: RED - 0xff00 - cyan - unlike what the docs say, endianness seems reversed
+
+      U16 pixel = (x+y==50) ? 0x00ff : ( (x==y) ? 0xFFFF : 0x0000 );
+      
+      *(pScreen + x + y*120) = pixel;
+    }
+  }
+  */
+
   game_draw();
 
   ++numFrames;

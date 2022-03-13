@@ -350,7 +350,6 @@ sysvid_shutdown(void)
 void
 sysvid_update(rect_t *rects)
 {
-  static SDL_Rect area;
   U16 x, y, xz, yz;
   U8 *p, *p0; 
   U16 *q, *q0;
@@ -358,59 +357,50 @@ sysvid_update(rect_t *rects)
   if (rects == NULL)
     return;
 
-  //if (SDL_LockSurface(screen) == -1)
-  //  sys_panic("xrick/panic: SDL_LockSurface failed\n");
-
-  while (rects) {
+  while (rects)
+  {   
     p0 = sysvid_fb;
-    p0 += rects->x + rects->y * SYSVID_WIDTH;
+    p0 += (rects->x) + (rects->y) * SYSVID_WIDTH;
     q0 = (U16 *)picosystem::SCREEN->data;
-    q0 += (rects->x + rects->y * SYSVID_WIDTH * zoom) * zoom;
+    q0 += (rects->x/2) + (rects->y/2) * SYSVID_WIDTH;
 
-    for (y = rects->y; y < rects->y + rects->height; y++) {
-      for (yz = 0; yz < zoom; yz++) {
-	p = p0;
-	q = q0;
-	for (x = rects->x; x < rects->x + rects->width; x++) {
-	  for (xz = 0; xz < zoom; xz++) 
+    int advance_q_row = 0;
+    int advance_q_col = 0;
+      
+    for (y = (rects->y); y < (rects->y) + (rects->height); y++)
     {
-      U16 target = 0xF000 | ((U16)(*p));
-	    *q = target;
-	    q++;
-	  }
-	  p++;
-	}
-	q0 += SYSVID_WIDTH * zoom;
-      }
-      p0 += SYSVID_WIDTH;
+        p = p0;
+        q = q0;
+        
+        for (x = (rects->x); x < (rects->x) + (rects->width); x++)
+        {
+          if (x < 240 && y < 240)
+          {
+            U8 src = *p;
+            *q = picosystem::rgb(15, 15, 0);//0x00F0 | ((U16)(*p)<<4);
+            //U16 target = ((U16)(*p));
+            //*q = target;
+          }
+            
+          advance_q_col = !advance_q_col;
+          if (advance_q_col)
+                q++;
+        
+          p++;
+        }
+
+        advance_q_row = !advance_q_row;
+        if (advance_q_row)
+            q0 += SYSVID_WIDTH;
+        
+        p0 += SYSVID_WIDTH;
     }
 
-    /*IFDEBUG_VIDEO2(
-    for (y = rects->y; y < rects->y + rects->height; y++)
-      for (yz = 0; yz < zoom; yz++) {
-	p = (U8 *)screen->pixels + rects->x * zoom + (y * zoom + yz) * SYSVID_WIDTH * zoom;
-	*p = 0x01;
-	*(p + rects->width * zoom - 1) = 0x01;
-      }
-
-    for (x = rects->x; x < rects->x + rects->width; x++)
-      for (xz = 0; xz < zoom; xz++) {
-	p = (U8 *)screen->pixels + x * zoom + xz + rects->y * zoom * SYSVID_WIDTH * zoom;
-	*p = 0x01;
-	*(p + ((rects->height * zoom - 1) * zoom) * SYSVID_WIDTH) = 0x01;
-      }
-    );*/
-
-    area.x = rects->x * zoom;
-    area.y = rects->y * zoom;
-    area.h = rects->height * zoom;
-    area.w = rects->width * zoom;
-    //SDL_UpdateRects(screen, 1, &area);
+  
 
     rects = rects->next;
   }
 
-  //SDL_UnlockSurface(screen);
 }
 
 
