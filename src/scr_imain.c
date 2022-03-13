@@ -58,13 +58,13 @@ screen_introMain(void)
 #ifdef GFXPC
     /* Rick Dangerous title */
     draw_tllst = (U8 *)screen_imainrdt;
-    draw_setfb(32, 16);
+    draw_setfb(0, 32);
     draw_filter = 0xaaaa;
     draw_tilesList();
 
     /* Core Design copyright + press space to start */
     draw_tllst = (U8 *)screen_imaincdc;
-    draw_setfb(64, 80);
+    draw_setfb(32, 90);
     draw_filter = 0x5555;
     draw_tilesList();
 #endif
@@ -101,7 +101,7 @@ screen_introMain(void)
     /* hall of fame title */
 #ifdef GFXPC
     draw_tllst = (U8 *)screen_imainhoft;
-    draw_setfb(32, 0);
+    draw_setfb(0, 16);
     draw_filter = 0xaaaa;
     draw_tilesList();
 #endif
@@ -110,7 +110,7 @@ screen_introMain(void)
 #endif
 
     /* hall of fame content */
-    draw_setfb(56, 40);
+    draw_setfb(12, 80);
 #ifdef GFXPC
     draw_filter = 0x5555;
 #endif

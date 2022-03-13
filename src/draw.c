@@ -256,7 +256,13 @@ draw_tile(U8 tileNumber)
      * per pixel to frame buffer 8 bits per pixels
      */
     for (k = 8; k--; x >>= 2)
-      f[k] = x & 3;
+    {
+#ifdef HALFRES
+      f[k/2] = x & 3;
+#else
+        f[k] = x & 3;
+#endif
+    }
     f += SYSVID_WIDTH;  /* next line */
 #endif
 

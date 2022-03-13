@@ -70,10 +70,10 @@ screen_introMap(void)
     draw_tilesBank = 0;
 #endif
     draw_tllst = screen_imaptext[game_map];
-    draw_setfb(32, 0);
+    draw_setfb(0, 10);
     draw_tilesSubList();
 
-    draw_setfb(32, 96);
+    draw_setfb(0, 96);
 #ifdef GFXPC
     draw_filter = 0x5555;
 #endif
@@ -155,18 +155,18 @@ drawtb(void)
 
   flipflop++;
   if (flipflop & 0x01) {
-    draw_setfb(128, 16);
+    draw_setfb(128-60, 16);
     for (i = 0; i < 6; i++)
       draw_tile(0x40);
-    draw_setfb(128, 72);
+    draw_setfb(128-60, 72);
     for (i = 0; i < 6; i++)
       draw_tile(0x06);
   }
   else {
-    draw_setfb(128, 16);
+    draw_setfb(128-60, 16);
     for (i = 0; i < 6; i++)
       draw_tile(0x05);
-    draw_setfb(128, 72);
+    draw_setfb(128-60, 72);
     for (i = 0; i < 6; i++)
       draw_tile(0x40);
   }
@@ -184,17 +184,17 @@ drawlr(void)
 
   if (flipflop & 0x02) {
     for (i = 0; i < 8; i++) {
-      draw_setfb(120, 16 + i * 8);
+      draw_setfb(120-60, 16 + i * 8);
       draw_tile(0x04);
-      draw_setfb(176, 16 + i * 8);
+      draw_setfb(176-60, 16 + i * 8);
       draw_tile(0x04);
     }
   }
   else {
     for (i = 0; i < 8; i++) {
-      draw_setfb(120, 16 + i * 8);
+      draw_setfb(120-60, 16 + i * 8);
       draw_tile(0x2B);
-      draw_setfb(176, 16 + i * 8);
+      draw_setfb(176-60, 16 + i * 8);
       draw_tile(0x2B);
     }
   }
@@ -208,7 +208,7 @@ drawlr(void)
 static void
 drawsprite(void)
 {
-  draw_sprite(spnum, 128 + ((spx << 1) & 0x1C), 24 + (spy << 1));
+  draw_sprite(spnum, 128-60 + ((spx << 1) & 0x1C), 32 + (spy << 1));
 }
 
 
@@ -224,7 +224,7 @@ drawcenter(void)
 
   tn = tn0[game_map];
   for (i = 0; i < 6; i++) {
-    draw_setfb(128, (24 + 8 * i));
+    draw_setfb(128-60, (32 + 8 * i));
     for (j = 0; j < 6; j++)
       draw_tile(tn++);
   }
