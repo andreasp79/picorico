@@ -140,14 +140,8 @@ sysvid_setPalette(img_color_t *pal, U16 n)
 
   for (i = 0; i < n; i++) 
   {
-    palette[i] = picosystem::rgb(pal[i].r, pal[i].g, pal[i].b);
+    palette[i] = picosystem::rgb(pal[i].r/16, pal[i].g/16, pal[i].b/16);
   }
-
-}
-
-void
-sysvid_restorePalette()
-{
 
 }
 
@@ -415,51 +409,6 @@ void
 sysvid_clear(void)
 {
   memset(sysvid_fb, 0, SYSVID_WIDTH * SYSVID_HEIGHT * 2);
-}
-
-
-/*
- * Zoom
- */
-void
-sysvid_zoom(S8 z)
-{
-  /*
-  if (!(videoFlags & SDL_FULLSCREEN) &&
-      ((z < 0 && zoom > 1) ||
-       (z > 0 && zoom < SYSVID_MAXZOOM))) {
-    zoom += z;
-    screen = initScreen(SYSVID_WIDTH * zoom,
-			SYSVID_HEIGHT * zoom,
-			screen->format->BitsPerPixel, videoFlags);
-    sysvid_restorePalette();
-    sysvid_update(&SCREENRECT);
-  }
-  */
-}
-
-/*
- * Toggle fullscreen
- */
-void
-sysvid_toggleFullscreen(void)
-{
-  #if 0
-  videoFlags ^= SDL_FULLSCREEN;
-
-  if (videoFlags & SDL_FULLSCREEN) {  /* go fullscreen */
-    szoom = zoom;
-    zoom = fszoom;
-  }
-  else {  /* go window */
-    zoom = szoom;
-  }
-  screen = initScreen(SYSVID_WIDTH * zoom,
-		      SYSVID_HEIGHT * zoom,
-		      screen->format->BitsPerPixel, videoFlags);
-  sysvid_restorePalette();
-  sysvid_update(&SCREENRECT);
-  #endif
 }
 
 /* eof */
