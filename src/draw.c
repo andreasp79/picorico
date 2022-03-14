@@ -98,11 +98,7 @@ static U16 *fb;     /* frame buffer pointer */
 void
 draw_setfb(U16 x, U16 y)
 {
-#ifdef HALFRES
-  fb = sysvid_fb + (x/2) + ((y/2) * SYSVID_WIDTH);
-#else
   fb = sysvid_fb + x + y * SYSVID_WIDTH;
-#endif
 }
 
 
@@ -170,11 +166,7 @@ draw_tilesList(void)
   while (draw_tilesSubList() != 0xFE)
   {
     /* draw sub-list */
-#ifdef HALFRES
-    t += 4 * SYSVID_WIDTH;
-#else
     t += 8 * SYSVID_WIDTH;  /* go down one tile i.e. 8 lines */
-#endif
       
     fb = t;
   }
@@ -261,12 +253,7 @@ draw_tile(U8 tileNumber)
   U16 x;
 #endif
 
-
-#ifdef HALFRES
-    int numLines = 4;
-#else
     int numLines = 8;
-#endif
 
   f = fb;  /* frame buffer */
   for (i = 0; i < numLines; i++) 
@@ -281,11 +268,7 @@ draw_tile(U8 tileNumber)
      */
     for (k = 8; k--; x >>= 2)
     {
-#ifdef HALFRES
-      f[k/2] = get_sys_palette_color( x & 3 );
-#else
         f[k] = get_sys_palette_color( x & 3 );
-#endif
     }
     f += SYSVID_WIDTH;  /* next line */
 #endif
@@ -293,11 +276,7 @@ draw_tile(U8 tileNumber)
 
   }
 
-#ifdef HALFRES
-    fb += 4;
-#else
   fb += 8;  /* next tile */
-#endif
 }
 
 /*
@@ -399,14 +378,7 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 	  xm |= 0xFFFF >> dx;
 
 
-    #ifdef HALFRES
-          
-          for (k = 8; k--; xm >>= 2, xp >>= 2)
-          {
-              f[k/2] = ((f[k] & (xm & 3)) | (xp & 3));
-          }
-#else
-
+    
 	/*
 	 * sprites / perform the transformation from CGA 2 bits
 	 * per pixel to frame buffer 8 bits per pixels
@@ -418,16 +390,11 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 #endif
 	}
 
-  #endif
       }
       f += SYSVID_WIDTH;
     }
 
-#ifdef HALFRES
-    fb += 4;
-#else
     fb += 8;
-#endif
 
   }
 }

@@ -87,26 +87,9 @@ extern void sys_sleep(int);
 #define SYSVID_ZOOM 1
 #define SYSVID_MAXZOOM 1
 
-//#define HALFRES
-#define SQUARE_DISPLAY
 
-#ifdef HALFRES
-#ifdef SQUARE_DISPLAY
-    #define SYSVID_WIDTH 120
-    #define SYSVID_HEIGHT 120
-#else
-    #define SYSVID_WIDTH 160
-    #define SYSVID_HEIGHT 100
-#endif
-#else
-    #ifdef SQUARE_DISPLAY
-        #define SYSVID_WIDTH 240
-        #define SYSVID_HEIGHT 240
-#else
-        #define SYSVID_WIDTH 320
-        #define SYSVID_HEIGHT 200
-    #endif
-#endif
+#define SYSVID_WIDTH 240
+#define SYSVID_HEIGHT 240
 
 
 extern void sysvid_init(void);
