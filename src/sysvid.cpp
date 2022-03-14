@@ -74,7 +74,7 @@ typedef struct SDL_Surface{
 U8 *sysvid_fb; /* frame buffer */
 rect_t SCREENRECT = {0, 0, SYSVID_WIDTH, SYSVID_HEIGHT, NULL}; /* whole fb */
 
-//static SDL_Color palette[256];
+static U16 palette[256];
 //static SDL_Surface *screen;
 static U32 videoFlags;
 
@@ -136,29 +136,24 @@ void initScreen(U16 w, U16 h, U8 bpp, U32 flags)
 void
 sysvid_setPalette(img_color_t *pal, U16 n)
 {
-  /*
   U16 i;
 
-  for (i = 0; i < n; i++) {
-    palette[i].r = pal[i].r;
-    palette[i].g = pal[i].g;
-    palette[i].b = pal[i].b;
+  for (i = 0; i < n; i++) 
+  {
+    palette[i] = picosystem::rgb(pal[i].r, pal[i].g, pal[i].b);
   }
-  SDL_SetColors(screen, (SDL_Color *)&palette, 0, n);*/
+
 }
 
 void
 sysvid_restorePalette()
 {
-  /*
-  SDL_SetColors(screen, (SDL_Color *)&palette, 0, 256);
-  */
+
 }
 
 void
 sysvid_setGamePalette()
 {
-  /*
   U8 i;
   img_color_t pal[256];
 
@@ -168,7 +163,6 @@ sysvid_setGamePalette()
     pal[i].b = BLUE[i];
   }
   sysvid_setPalette(pal, 32);
-  */
 }
 
 /*
@@ -364,8 +358,8 @@ sysvid_update(rect_t *rects)
     q0 = (U16 *)picosystem::SCREEN->data;
     q0 += (rects->x/2) + (rects->y/2) * SYSVID_WIDTH;
 
-    int advance_q_row = 0;
-    int advance_q_col = 0;
+    //int advance_q_row = 0;
+    //int advance_q_col = 0;
       
     for (y = (rects->y); y < (rects->y) + (rects->height); y++)
     {
@@ -373,24 +367,27 @@ sysvid_update(rect_t *rects)
         q = q0;
         
         for (x = (rects->x); x < (rects->x) + (rects->width); x++)
-        {
-          if (x < 240 && y < 240)
+        { 
+          if (x < SYSVID_WIDTH)
           {
-            U8 src = *p;
-            *q = picosystem::rgb(15, 15, 0);//0x00F0 | ((U16)(*p)<<4);
+            //U8 src = *p;
+            //*q = picosystem::rgb(15, 15, 0);//0x00F0 | ((U16)(*p)<<4);
+
+            *q = palette[*p];
+            
             //U16 target = ((U16)(*p));
             //*q = target;
           }
             
-          advance_q_col = !advance_q_col;
-          if (advance_q_col)
+          //advance_q_col = !advance_q_col;
+         // if (advance_q_col)
                 q++;
         
           p++;
         }
 
-        advance_q_row = !advance_q_row;
-        if (advance_q_row)
+        //advance_q_row = !advance_q_row;
+        //if (advance_q_row)
             q0 += SYSVID_WIDTH;
         
         p0 += SYSVID_WIDTH;

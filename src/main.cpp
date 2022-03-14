@@ -21,19 +21,19 @@ voice_t v;
  void PlayTuneLow()
 {
   play(v, 400, 500, 100);
-  sleep(1000);
+  //sleep(1000);
 }
 
 void PlayTuneHigh()
 {
   play(v, 2000, 500, 100);
-  sleep(1000);
+  //sleep(1000);
 }
 
 void PlayTuneSuperHigh()
 {
   play(v, 6000, 500, 100);
-  sleep(1000);
+  //sleep(1000);
 }
  }
 
@@ -74,8 +74,8 @@ int numFrames = 0;
 
 void draw(uint32_t tick) 
 {
-  pen(0, 0, 0);
-  clear();
+  //pen(0, 0, 0);
+  //clear();
 
   /*
 
