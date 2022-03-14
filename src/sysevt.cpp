@@ -84,42 +84,52 @@ static int processEvents()
       SETBIT(control_status, CONTROL_UP);
       control_last = CONTROL_UP;
     }
-    else if (KeyDownWentDown) {
+    
+     if (KeyDownWentDown) {
       SETBIT(control_status, CONTROL_DOWN);
       control_last = CONTROL_DOWN;
     }
-    else if (KeyLeftWentDown) {
+    
+     if (KeyLeftWentDown) {
       SETBIT(control_status, CONTROL_LEFT);
       control_last = CONTROL_LEFT;
     }
-    else if (KeyRightWentDown) {
+    
+     if (KeyRightWentDown) {
       SETBIT(control_status, CONTROL_RIGHT);
       control_last = CONTROL_RIGHT;
     }
-    else if (KeyXpWentDown) {
+    
+     if (KeyXpWentDown) {
       SETBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
-    else if (KeyYWentDown) {
+    
+     if (KeyYWentDown) {
       SETBIT(control_status, CONTROL_END);
       control_last = CONTROL_END;
     }
-    else if (KeyAWentDown) {
+    
+     if (KeyAWentDown) {
       SETBIT(control_status, CONTROL_EXIT);
       control_last = CONTROL_EXIT;
     }
-    else if (KeyBpWentDown) {
+    
+     if (KeyBpWentDown) {
       PlayTuneLow();
       SETBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }
-   /* else if (key == SDLK_F1) {
+   /* 
+    if (key == SDLK_F1) {
       sysvid_toggleFullscreen();
     }
-    else if (key == SDLK_F2) {
+    
+     if (key == SDLK_F2) {
       sysvid_zoom(-1);
     }
-    else if (key == SDLK_F3) {
+    
+     if (key == SDLK_F3) {
       sysvid_zoom(+1);
     }*/
 #ifdef ENABLE_SOUND
@@ -151,31 +161,38 @@ static int processEvents()
       CLRBIT(control_status, CONTROL_UP);
       control_last = CONTROL_UP;
     }
-    else if (KeyDownWentUp) {
+    
+     if (KeyDownWentUp) {
       CLRBIT(control_status, CONTROL_DOWN);
       control_last = CONTROL_DOWN;
     }
-    else if (KeyLeftWentUp) {
+    
+     if (KeyLeftWentUp) {
       CLRBIT(control_status, CONTROL_LEFT);
       control_last = CONTROL_LEFT;
     }
-    else if (KeyRightWentUp) {
+    
+     if (KeyRightWentUp) {
       CLRBIT(control_status, CONTROL_RIGHT);
       control_last = CONTROL_RIGHT;
     }
-    else if (KeyXpWentUp) {
+    
+     if (KeyXpWentUp) {
       CLRBIT(control_status, CONTROL_PAUSE);
       control_last = CONTROL_PAUSE;
     }
-    else if (KeyYWentUp) {
+    
+     if (KeyYWentUp) {
       CLRBIT(control_status, CONTROL_END);
       control_last = CONTROL_END;
     }
-    else if (KeyAWentUp) {
+    
+     if (KeyAWentUp) {
       CLRBIT(control_status, CONTROL_EXIT);
       control_last = CONTROL_EXIT;
     }
-    else if (KeyBpWentUp) {
+    
+     if (KeyBpWentUp) {
       CLRBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }

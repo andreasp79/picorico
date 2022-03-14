@@ -414,7 +414,7 @@ sysvid_update(rect_t *rects)
 void
 sysvid_clear(void)
 {
-  memset(sysvid_fb, 0, SYSVID_WIDTH * SYSVID_HEIGHT);
+  memset(sysvid_fb, 0, SYSVID_WIDTH * SYSVID_HEIGHT * 2);
 }
 
 

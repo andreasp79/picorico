@@ -59,12 +59,12 @@
  * counters positions (pixels, screen)
  */
 #ifdef GFXPC
-#define DRAW_STATUS_SCORE_X 0x28
-#define DRAW_STATUS_LIVES_X 0xE8
-#define DRAW_STATUS_Y 0x08
+#define DRAW_STATUS_SCORE_X 5
+#define DRAW_STATUS_LIVES_X 190
+#define DRAW_STATUS_Y 210
 #endif
-#define DRAW_STATUS_BULLETS_X 0x68
-#define DRAW_STATUS_BOMBS_X 0xA8
+#define DRAW_STATUS_BULLETS_X 60
+#define DRAW_STATUS_BOMBS_X 120
 
 
 
@@ -217,6 +217,29 @@ draw_tilesSubList()
   return i;
 }
 
+
+void draw_black_tile()
+{
+    U8 i, k;
+    U16 *f;
+
+int numLines = 8;
+
+
+  f = fb;  /* frame buffer */
+  for (i = 0; i < numLines; i++)
+  {  /* for all 8 pixel lines */
+
+      for (k = 0; k<8; ++k)
+    {
+        f[k] = 0;
+
+    }
+    f += SYSVID_WIDTH;  /* next line */
+  }
+
+  fb += 8;  /* next tile */
+}
 
 /*
  * Draw a tile
@@ -545,15 +568,13 @@ draw_clearStatus(void)
 {
   U8 i;
 
-#ifdef GFXPC
   draw_tilesBank = map_tilesBank;
-#endif
 
   draw_setfb(DRAW_STATUS_SCORE_X, DRAW_STATUS_Y);
-  for (i = 0; i < DRAW_STATUS_LIVES_X/8 + 6 - DRAW_STATUS_SCORE_X/8; i++) {
-#ifdef GFXPC
-    draw_tile(map_map[MAP_ROW_SCRTOP + (DRAW_STATUS_Y / 8)][i]);
-#endif
+  for (i = 0; i < DRAW_STATUS_LIVES_X/8 + 6 - DRAW_STATUS_SCORE_X/8; i++) 
+  {
+   // draw_tile(map_map[MAP_ROW_SCRTOP + (DRAW_STATUS_Y / 8)][i]);
+  draw_black_tile();
 
   }
 }
