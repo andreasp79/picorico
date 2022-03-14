@@ -458,7 +458,7 @@ draw_map(void)
 
   for (i = 0; i < 0x18; i++) {  /* 0x18 rows */
 #ifdef GFXPC
-    draw_setfb(0x20, (i * 8));
+    draw_setfb(0, (i * 8));
 #endif
 
     for (j = 0; j < 0x20; j++)  /* 0x20 tiles per row */
