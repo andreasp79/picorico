@@ -87,7 +87,7 @@ rect_t draw_SCREENRECT = { 0, 0, SYSVID_WIDTH, SYSVID_HEIGHT, NULL };
 /*
  * private vars
  */
-static U8 *fb;     /* frame buffer pointer */
+static U16 *fb;     /* frame buffer pointer */
 
 
 /*
@@ -164,7 +164,7 @@ draw_clipms(S16 *x, S16 *y, U16 *width, U16 *height)
 void
 draw_tilesList(void)
 {
-  U8 *t;
+  U16 *t;
 
   t = fb;
   while (draw_tilesSubList() != 0xFE)
@@ -231,7 +231,8 @@ draw_tilesSubList()
 void
 draw_tile(U8 tileNumber)
 {
-  U8 i, k, *f;
+  U8 i, k;
+  U16* f;
 
 #ifdef GFXPC
   U16 x;
@@ -258,9 +259,9 @@ draw_tile(U8 tileNumber)
     for (k = 8; k--; x >>= 2)
     {
 #ifdef HALFRES
-      f[k/2] = x & 3;
+      f[k/2] = get_sys_palette_color( x & 3 );
 #else
-        f[k] = x & 3;
+        f[k] = get_sys_palette_color( x & 3 );
 #endif
     }
     f += SYSVID_WIDTH;  /* next line */
@@ -288,7 +289,8 @@ draw_tile(U8 tileNumber)
 void
 draw_sprite(U8 nbr, U16 x, U16 y)
 {
-  U8 i, j, k, *f;
+  U8 i, j, k;
+  U16 *f;
   U16 xm = 0, xp = 0;
 
   draw_setfb(x, y);
@@ -303,7 +305,8 @@ draw_sprite(U8 nbr, U16 x, U16 y)
        * per pixel to frame buffer 8 bits per pixels
        */
       for (k = 8; k--; xm >>= 2, xp >>= 2)
-	f[k] = (f[k] & (xm & 3)) | (xp & 3);
+	      f[k] = get_sys_palette_color( ((xm & 3)) | (xp & 3) );
+      
       f += SYSVID_WIDTH;
     }
     fb += 8;
@@ -326,7 +329,8 @@ draw_sprite(U8 nbr, U16 x, U16 y)
 void
 draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 {
-  U8 k, *f, c, r, dx;
+  U8 k, c, r, dx;
+  U16* f;
   U16 cmax, rmax;
   U16 xm = 0, xp = 0;
   S16 xmap, ymap;
@@ -385,7 +389,7 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 	 * per pixel to frame buffer 8 bits per pixels
 	 */
 	for (k = 8; k--; xm >>= 2, xp >>= 2) {
-	  f[k] = ((f[k] & (xm & 3)) | (xp & 3));
+	  f[k] = get_sys_palette_color((xm & 3) | (xp & 3));
 #ifdef ENABLE_CHEATS
 	  if (game_cheat3) f[k] |= 4;
 #endif
@@ -571,7 +575,7 @@ draw_img_fullscreen(img_t *i)
   if (i->ncolors > 0)
     sysvid_setPalette(i->colors, i->ncolors);
   for (k = 0; k < SYSVID_WIDTH * SYSVID_HEIGHT; k++)
-    fb[k] = i->pixels[k];
+    fb[k] = get_sys_palette_color(i->pixels[k]);
 }
 
 

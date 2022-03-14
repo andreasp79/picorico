@@ -87,7 +87,7 @@ extern void sys_sleep(int);
 #define SYSVID_ZOOM 1
 #define SYSVID_MAXZOOM 1
 
-#define HALFRES
+//#define HALFRES
 #define SQUARE_DISPLAY
 
 #ifdef HALFRES

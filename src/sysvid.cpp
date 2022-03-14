@@ -71,7 +71,7 @@ typedef struct SDL_Surface{
   };*/
 
 
-U8 *sysvid_fb; /* frame buffer */
+U16 *sysvid_fb; /* frame buffer */
 rect_t SCREENRECT = {0, 0, SYSVID_WIDTH, SYSVID_HEIGHT, NULL}; /* whole fb */
 
 static U16 palette[256];
@@ -225,7 +225,7 @@ sysvid_init(void)
 {
   //PlayTuneSuperHigh();
 
-  sysvid_fb = (U8*)malloc(SYSVID_WIDTH * SYSVID_HEIGHT);
+  sysvid_fb = (U16*)picosystem::SCREEN->data;//(U8*)malloc(SYSVID_WIDTH * SYSVID_HEIGHT);
 
   //PlayTuneSuperHigh();
 
@@ -245,7 +245,7 @@ sysvid_init(void)
     }
     
   }
-  #if 0
+  #if false
   SDL_Surface *s;
   U8 *mask, tpix;
   U32 len, i;
@@ -331,12 +331,16 @@ sysvid_init(void)
 void
 sysvid_shutdown(void)
 {
-  free(sysvid_fb);
+ // free(sysvid_fb);
   sysvid_fb = NULL;
 
   //SDL_Quit();
 }
 
+U16 get_sys_palette_color(U8 colorIdx)
+{
+  return palette[colorIdx];
+}
 /*
  * Update screen
  * NOTE errors processing ?
@@ -344,6 +348,7 @@ sysvid_shutdown(void)
 void
 sysvid_update(rect_t *rects)
 {
+  #if false
   U16 x, y, xz, yz;
   U8 *p, *p0; 
   U16 *q, *q0;
@@ -397,6 +402,7 @@ sysvid_update(rect_t *rects)
 
     rects = rects->next;
   }
+  #endif
 
 }
 
