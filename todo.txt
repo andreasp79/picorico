@@ -1,3 +1,0 @@
-- transparency color key (see commented out section in sysvid_init)
-- fix blending (removed the read from framebuffer in draw* functions as the pico framebuffer doesn't have data in a game format)
-- skip rendering the leftmost tile, so one tile is lost on each side of the screen (instead of 2 tiles on the right side)

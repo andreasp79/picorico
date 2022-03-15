@@ -70,7 +70,7 @@ screen_introMain(void)
 #endif
 
 #ifdef GFXST
-    draw_pic(0, 0, 0x140, 0xc8, pic_splash);
+    draw_pic(0, 0, 0x140, 0xc8, pic_splash, -30, 20);
 #endif
 
     seq = 2;
@@ -106,7 +106,7 @@ screen_introMain(void)
     draw_tilesList();
 #endif
 #ifdef GFXST
-    draw_pic(0, 0, 0x140, 0x20, pic_haf);
+    draw_pic(0, 0, 0x140, 0x20, pic_haf, -40, 20);
 #endif
 
     /* hall of fame content */

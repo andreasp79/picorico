@@ -375,10 +375,10 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
       /* check that tile is not hidden behind foreground */
 #ifdef ENABLE_CHEATS
       if (front || game_cheat3 ||
-	  !(map_eflg[map_map[(ymap + r) >> 3][xmap + c]] & MAP_EFLG_FGND)) {
+	  !(map_eflg[map_map[(ymap + r) >> 3][xmap + c + 1]] & MAP_EFLG_FGND)) {
 #else
       if (front ||
-	  !(map_eflg[map_map[(ymap + r) >> 3][xmap + c]] & MAP_EFLG_FGND)) {
+	  !(map_eflg[map_map[(ymap + r) >> 3][xmap + c + 1]] & MAP_EFLG_FGND)) {
 #endif
 	xp = xm = 0;
 	if (c > 0) {
@@ -425,8 +425,12 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
  * x, y: sprite position (pixels, map).
  */
 void
-draw_spriteBackground(U16 x, U16 y)
+draw_spriteBackground(U16 ux, U16 y)
 {
+  S16 x = ux;
+    
+  x-=8; //account for missing left tile
+
   U8 r, c;
   U16 rmax, cmax;
   S16 xmap, ymap;
@@ -458,7 +462,7 @@ draw_spriteBackground(U16 x, U16 y)
 #endif
 
     for (c = 0; c < cmax; c++) {  /* for each column */
-      draw_tile(map_map[ymap + r][xmap + c]);
+      draw_tile(map_map[ymap + r][xmap + c + MIN_TILE_X]);
     }
   }
 }
@@ -485,7 +489,7 @@ draw_map(void)
 #endif
 
     for (j = 0; j < MAX_TILE_X; j++)  /* 0x20 tiles per row */
-      draw_tile(map_map[i + 8][j]);
+      draw_tile(map_map[i + 8][j + MIN_TILE_X]);
   }
 }
 
@@ -597,8 +601,12 @@ draw_img_fullscreen(img_t *i)
  */
 #ifdef GFXST
 void
-draw_sprite2(U8 number, U16 x, U16 y, U8 front)
+draw_sprite2(U8 number, U16 ux, U16 y, U8 front)
 {
+  S16 x = ux;
+    
+  x-=8; // account for missing left tile
+
   U32 d = 0;   /* sprite data */
   S16 x0, y0;  /* clipped x, y */
   U16 w, h;    /* width, height */
@@ -624,7 +632,7 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 
     i = 0x1f;
     im = x - (x & 0xfff8);
-    flg = map_eflg[map_map[(y + r) >> 3][(x + 0x1f)>> 3]];
+    flg = map_eflg[map_map[(y + r) >> 3][1 + (x + 0x1f)>> 3]];
 
 #ifdef ENABLE_CHEATS
 #define LOOP(N, C0, C1) \
@@ -644,7 +652,7 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
     d = sprites_data[number][g + N]; \
     for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
       if (im == 0) { \
-	flg = map_eflg[map_map[(y + r) >> 3][(x + c) >> 3]]; \
+	flg = map_eflg[map_map[(y + r) >> 3][1 + (x + c) >> 3]]; \
 	im = 8; \
       } \
       if (!front && (flg & MAP_EFLG_FGND)) continue; \
@@ -665,8 +673,11 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 }
 
 void
-draw_sprite(U8 number, U16 x, U16 y)
+draw_sprite(U8 number, U16 ux, U16 y)
 {
+  S16 x = ux;
+  x -= 8;
+
   U8 i, j, k;
   U16 *f;
   U16 g;
@@ -688,9 +699,41 @@ draw_sprite(U8 number, U16 x, U16 y)
 }
 
 void
-draw_pic(U16 x, U16 y, U16 w, U16 h, U32 *pic)
+draw_pic(U16 x, U16 y, U16 w, U16 h, U32 *pic, S16 render_offset_x, S16 render_offset_y)
 {
+   U16 *f;
+     U16 k, pp;
+     U32 v;
 
+     int draw_start_x = (S16)x + render_offset_x;
+     int draw_start_y = y + render_offset_y;
+
+     pp = 0;
+
+     for (int pixelY = 0; pixelY < h; pixelY++)
+     {
+       /* rows */
+
+         int screenPixelX = draw_start_x;
+         int screenPixelY = draw_start_y + pixelY;
+         
+       for (int pixelX = 0; pixelX < w; pixelX += 8)
+       {
+          /* cols */
+         v = pic[pp++];
+           
+         if (screenPixelX >= 0 && screenPixelX < 240 && screenPixelY >= 0 && screenPixelY < 240)
+         {
+               draw_setfb(screenPixelX, screenPixelY);
+               f = fb;
+
+               for (k = 8; k--; v >>=4)
+                     f[k] = get_sys_palette_color(v & 0x0F);
+         }
+           
+           screenPixelX += 8;
+       }
+     }
 }
 #endif
 
