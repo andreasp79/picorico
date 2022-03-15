@@ -18,7 +18,7 @@
 #include "system.h"
 #include "sprites.h"
 
-sprite_t sprites_data[SPRITES_NBR_SPRITES] = {
+const sprite_t sprites_data[SPRITES_NBR_SPRITES] = {
     {
       {
       {0xffff, 000000},

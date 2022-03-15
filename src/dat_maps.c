@@ -14,7 +14,7 @@
 #include "system.h"
 #include "maps.h"
 
-map_t map_maps[MAP_NBR_MAPS] = {
+const map_t map_maps[MAP_NBR_MAPS] = {
   {0x0008, 0x008b, 0x0008, 000000, "sounds/tune0.wav"},
   {0x0008, 0x008b, 0x0068, 0x0009, "sounds/tune1.wav"},
   {0x0010, 0x008b, 0x0010, 0x0014, "sounds/tune2.wav"},
@@ -22,7 +22,7 @@ map_t map_maps[MAP_NBR_MAPS] = {
   {0x0074, 0x00c8, 0x0008, 0x0026, "sounds/tune4.wav"},
 };
 
-submap_t map_submaps[MAP_NBR_SUBMAPS] = {
+const submap_t map_submaps[MAP_NBR_SUBMAPS] = {
   {000000, 000000, 000000, 000000},
   {000000, 0x0078, 0x0003, 0x0005},
   {000000, 0x0150, 0x0006, 0x0011},
@@ -72,7 +72,7 @@ submap_t map_submaps[MAP_NBR_SUBMAPS] = {
   {0x0001, 0x1f5a, 0x0096, 0x0202},
 };
 
-connect_t map_connect[MAP_NBR_CONNECT] = {
+const connect_t map_connect[MAP_NBR_CONNECT] = {
 
   /* map 0 */
 
@@ -287,7 +287,7 @@ connect_t map_connect[MAP_NBR_CONNECT] = {
   {0xff, 0x00, 0x00, 0x00},
 };
 
-U8 map_bnums[MAP_NBR_BNUMS] = {
+const U8 map_bnums[MAP_NBR_BNUMS] = {
   0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46,
   0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46,
   0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46, 0x46,
@@ -1309,7 +1309,7 @@ U8 map_bnums[MAP_NBR_BNUMS] = {
   0xc0, 0xc0, 0000, 0000, 0000, 0000, 0000, 0000,
 };
 
-block_t map_blocks[MAP_NBR_BLOCKS] = {
+const block_t map_blocks[MAP_NBR_BLOCKS] = {
   {0000, 0000, 0000, 0000, 0000, 0000, 0000, 0000,
    0000, 0000, 0000, 0000, 0000, 0000, 0000, 0000},
   {0x29, 0x2a, 0x2d, 0x2e, 0x2b, 0x2c, 0x2f, 0x30,

@@ -18,8 +18,8 @@
 #define VERSION "021212"
 
 /* graphics (choose one) */
-#undef GFXST
-#define GFXPC
+#define GFXST
+#undef GFXPC
 
 /* joystick support */
 #undef ENABLE_JOYSTICK

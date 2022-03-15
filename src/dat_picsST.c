@@ -1302,7 +1302,7 @@ const U32 pic_congrats[] =
   0000000000,
 };
 
-U32 pic_haf[] =
+const U32 pic_haf[] =
 {
   0000000000,
   0000000000,
@@ -2586,7 +2586,7 @@ U32 pic_haf[] =
   0000000000,
 };
 
-U32 pic_splash[] =
+const U32 pic_splash[] =
 {
   0000000000,
   0000000000,

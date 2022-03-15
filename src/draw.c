@@ -58,11 +58,10 @@
 /*
  * counters positions (pixels, screen)
  */
-#ifdef GFXPC
 #define DRAW_STATUS_SCORE_X 5
 #define DRAW_STATUS_LIVES_X 190
 #define DRAW_STATUS_Y 210
-#endif
+
 #define DRAW_STATUS_BULLETS_X 60
 #define DRAW_STATUS_BOMBS_X 120
 
@@ -255,6 +254,10 @@ draw_tile(U8 tileNumber)
   U16 x;
 #endif
 
+#ifdef GFXST
+  U32 x;
+#endif
+
     int numLines = 8;
 
   f = fb;  /* frame buffer */
@@ -273,6 +276,18 @@ draw_tile(U8 tileNumber)
         f[k] = get_sys_palette_color( x & 3 );
     }
     f += SYSVID_WIDTH;  /* next line */
+#endif
+
+#ifdef GFXST
+  x = tiles_data[draw_tilesBank][tileNumber][i];
+  /*
+   * tiles / perform the transformation from ST 4 bits
+   * per pixel to frame buffer 8 bits per pixels
+   */
+  for (k = 8; k--; x >>= 4)
+    f[k] = get_sys_palette_color(x & 0x0F);
+
+  f += SYSVID_WIDTH;  /* next line */
 #endif
 
 
@@ -438,6 +453,9 @@ draw_spriteBackground(U16 x, U16 y)
 #ifdef GFXPC
     draw_setfb(xs, ys + r * 8);
 #endif
+#ifdef GFXST
+    draw_setfb(xs, 8 + ys + r * 8);
+#endif
 
     for (c = 0; c < cmax; c++) {  /* for each column */
       draw_tile(map_map[ymap + r][xmap + c]);
@@ -461,6 +479,9 @@ draw_map(void)
   for (i = 0; i < 0x18; i++) {  /* 0x18 rows */
 #ifdef GFXPC
     draw_setfb(0, (i * 8));
+#endif
+#ifdef GFXST
+    draw_setfb(0, 8 + (i * 8));
 #endif
 
     for (j = 0; j < MAX_TILE_X; j++)  /* 0x20 tiles per row */
@@ -567,6 +588,111 @@ draw_img_fullscreen(img_t *i)
   for (k = 0; k < SYSVID_WIDTH * SYSVID_HEIGHT; k++)
     fb[k] = get_sys_palette_color(i->pixels[k]);
 }
+
+
+/*
+ * Draw a sprite
+ *
+ * NOTE re-using original ST graphics format
+ */
+#ifdef GFXST
+void
+draw_sprite2(U8 number, U16 x, U16 y, U8 front)
+{
+  U32 d = 0;   /* sprite data */
+  S16 x0, y0;  /* clipped x, y */
+  U16 w, h;    /* width, height */
+  S16 g,       /* sprite data offset*/
+    r, c,      /* row, column */
+    i,         /* frame buffer shifter */
+    im;        /* tile flag shifter */
+  U8 flg;      /* tile flag */
+
+  x0 = x;
+  y0 = y;
+  w = 0x20;
+  h = 0x15;
+
+  if (draw_clipms(&x0, &y0, &w, &h))  /* return if not visible */
+    return;
+
+  g = 0;
+  draw_setfb(x0 - DRAW_XYMAP_SCRLEFT, y0 - DRAW_XYMAP_SCRTOP + 8);
+
+  for (r = 0; r < 0x15; r++) {
+    if (r >= h || y + r < y0) continue;
+
+    i = 0x1f;
+    im = x - (x & 0xfff8);
+    flg = map_eflg[map_map[(y + r) >> 3][(x + 0x1f)>> 3]];
+
+#ifdef ENABLE_CHEATS
+#define LOOP(N, C0, C1) \
+    d = sprites_data[number][g + N]; \
+    for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
+      if (im == 0) { \
+	flg = map_eflg[map_map[(y + r) >> 3][(x + c) >> 3]]; \
+	im = 8; \
+      } \
+      if (c >= w || x + c < x0) continue; \
+      if (!front && !game_cheat3 && (flg & MAP_EFLG_FGND)) continue; \
+      if (d & 0x0F) fb[i] = (fb[i] & 0xF0) | (d & 0x0F); \
+      if (game_cheat3) fb[i] |= 0x10; \
+    }
+#else
+#define LOOP(N, C0, C1) \
+    d = sprites_data[number][g + N]; \
+    for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
+      if (im == 0) { \
+	flg = map_eflg[map_map[(y + r) >> 3][(x + c) >> 3]]; \
+	im = 8; \
+      } \
+      if (!front && (flg & MAP_EFLG_FGND)) continue; \
+      if (c >= w || x + c < x0) continue; \
+      if (d & 0x0F) fb[i] = get_sys_palette_color((/*fb[i]*/ 1 & 0xF0) | (d & 0x0F)); \
+    }
+#endif
+    LOOP(3, 0x1f, 0x18);
+    LOOP(2, 0x17, 0x10);
+    LOOP(1, 0x0f, 0x08);
+    LOOP(0, 0x07, 0x00);
+
+#undef LOOP
+
+    fb += SYSVID_WIDTH;
+    g += 4;
+  }
+}
+
+void
+draw_sprite(U8 number, U16 x, U16 y)
+{
+  U8 i, j, k;
+  U16 *f;
+  U16 g;
+  U32 d;
+
+  draw_setfb(x, y);
+  g = 0;
+  for (i = 0; i < 0x15; i++) { /* rows */
+    f = fb;
+    for (j = 0; j < 4; j++) { /* cols */
+      d = sprites_data[number][g++];
+      for (k = 8; k--; d >>= 4)
+	if (d & 0x0F) 
+    f[k] = get_sys_palette_color((/*f[k] &*/0 & 0xF0) | (d & 0x0F));
+      f += 8;
+    }
+    fb += SYSVID_WIDTH;
+  }
+}
+
+void
+draw_pic(U16 x, U16 y, U16 w, U16 h, U32 *pic)
+{
+
+}
+#endif
 
 
 /* eof */

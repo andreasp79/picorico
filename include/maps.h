@@ -48,7 +48,7 @@ typedef struct {
   char *tune;	/* map tune */
 } map_t;
 
-extern map_t map_maps[MAP_NBR_MAPS];
+extern const map_t map_maps[MAP_NBR_MAPS];
 
 /*
  * sub maps
@@ -60,7 +60,7 @@ typedef struct {
   U16 mark;            /* first entity mark */
 } submap_t;
 
-extern submap_t map_submaps[MAP_NBR_SUBMAPS];
+extern const submap_t map_submaps[MAP_NBR_SUBMAPS];
 
 /*
  * connections
@@ -72,14 +72,14 @@ typedef struct {
   U8 rowin;
 } connect_t;
 
-extern connect_t map_connect[MAP_NBR_CONNECT];
+extern const connect_t map_connect[MAP_NBR_CONNECT];
 
 /*
  * blocks - one block is 4 by 4 tiles.
  */
 typedef U8 block_t[0x10];
 
-extern block_t map_blocks[MAP_NBR_BLOCKS];
+extern const block_t map_blocks[MAP_NBR_BLOCKS];
 
 /*
  * flags for map_marks[].ent ("yes" when set)
@@ -104,7 +104,7 @@ extern mark_t map_marks[MAP_NBR_MARKS];
 /*
  * block numbers, i.e. array of rows of 8 blocks
  */
-extern U8 map_bnums[MAP_NBR_BNUMS];
+extern const U8 map_bnums[MAP_NBR_BNUMS];
 
 /*
  * flags for map_eflg[map_map[row][col]]  ("yes" when set)

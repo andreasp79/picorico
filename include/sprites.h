@@ -41,7 +41,7 @@ typedef struct {
 
 typedef spriteX_t sprite_t[4][0x15];   /* one sprite */
 
-extern sprite_t sprites_data[SPRITES_NBR_SPRITES];
+extern const sprite_t sprites_data[SPRITES_NBR_SPRITES];
 
 #endif
 
@@ -51,7 +51,7 @@ extern sprite_t sprites_data[SPRITES_NBR_SPRITES];
 
 typedef U32 sprite_t[0x54];  /* 0x15 per 0x04 */
 
-extern sprite_t sprites_data[SPRITES_NBR_SPRITES];
+extern const sprite_t sprites_data[SPRITES_NBR_SPRITES];
 
 #endif
 

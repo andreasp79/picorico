@@ -61,7 +61,7 @@ typedef U32 tile_t[0x08];
 /*
  * tiles banks (each bank is 0x100 tiles)
  */
-extern tile_t tiles_data[TILES_NBR_BANKS][0x100];
+extern const tile_t tiles_data[TILES_NBR_BANKS][0x100];
 
 #endif
 

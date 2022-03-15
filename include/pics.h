@@ -14,9 +14,9 @@
 #ifndef _PICS_H
 #define _PICS_H
 
-extern U32 pic_haf[];
-extern U32 const pic_congrats[];
-extern U32 pic_splash[];
+extern const U32 pic_haf[];
+extern const U32 pic_congrats[];
+extern const U32 pic_splash[];
 
 #endif
 
