@@ -112,6 +112,8 @@ draw_setfb(U16 x, U16 y)
 U8
 draw_clipms(S16 *x, S16 *y, U16 *width, U16 *height)
 {
+  const S16 MAX_X = 0xF0;//240
+
   if (*x < 0) {
     if (*x + *width < 0)
       return TRUE;
@@ -121,10 +123,10 @@ draw_clipms(S16 *x, S16 *y, U16 *width, U16 *height)
     }
   }
   else {
-    if (*x > 0x0100)
+    if (*x > MAX_X)
       return TRUE;
-    else if (*x + *width > 0x0100) {
-      *width = 0x0100 - *x;
+    else if (*x + *width > MAX_X) {
+      *width = MAX_X - *x;
     }
   }
 
@@ -461,7 +463,7 @@ draw_map(void)
     draw_setfb(0, (i * 8));
 #endif
 
-    for (j = 0; j < 0x20; j++)  /* 0x20 tiles per row */
+    for (j = 0; j < MAX_TILE_X; j++)  /* 0x20 tiles per row */
       draw_tile(map_map[i + 8][j]);
   }
 }

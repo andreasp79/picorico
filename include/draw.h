@@ -25,6 +25,10 @@
 /* map coordinates of the top of the hidden bottom of the map */
 #define DRAW_XYMAP_HBTOP (0x0100)
 
+// Originally 32. Changed to 30 as that's what fits in 240x240.
+#define MAX_TILE_X (30)
+
+
 extern U8 *draw_tllst;
 #ifdef GFXPC
 extern U16 draw_filter;
