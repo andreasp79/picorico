@@ -1,16 +1,7 @@
-# PicoSystem Boilerplate
+# picorico
 
-If you're starting a project in your own GitHub repository, this boilerplate will show you how to set it up.
+Rick Dangerous for Pimoroni's Picosystem, https://shop.pimoroni.com/products/picosystem?variant=32369546985555
 
-You should have:
+Work in progress, but playable. 
 
-- CMakeLists.txt
-- main.cpp (and/or your sources)
-- pico_sdk_import.cmake - Helper to find the Pico SDK
-- picosystem_sdk_import.cmake  - Helper to find the PicoSystem SDK
-
-
-You should also have the Pico SDK and PicoSystem SDK's in directories alongside this one:
-
-- PicoSystem SDK - https://github.com/pimoroni/picosystem
-- Pico SDK - https://github.com/raspberrypi/pico-sdk/
+Based on BigOrno's xrick work (http://www.bigorno.net/xrick/download.html)
