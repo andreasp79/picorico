@@ -373,13 +373,9 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
     f = fb;
     for (r = 0; r < rmax; r++) {  /* for each pixel row */
       /* check that tile is not hidden behind foreground */
-#ifdef ENABLE_CHEATS
-      if (front || game_cheat3 ||
-	  !(map_eflg[map_map[(ymap + r) >> 3][xmap + c + 1]] & MAP_EFLG_FGND)) {
-#else
       if (front ||
 	  !(map_eflg[map_map[(ymap + r) >> 3][xmap + c + 1]] & MAP_EFLG_FGND)) {
-#endif
+
 	xp = xm = 0;
 	if (c > 0) {
 	  xm |= sprites_data[number][c - 1][r].mask << (16 - dx);
@@ -532,29 +528,6 @@ draw_drawStatus(void)
 
 
 /*
- * Draw info indicators
- */
-#ifdef ENABLE_CHEATS
-void
-draw_infos(void)
-{
-  draw_tilesBank = 0;
-
-#ifdef GFXPC
-  draw_filter = 0xffff;
-#endif
-
-  draw_setfb(0x00, DRAW_STATUS_Y);
-  draw_tile(game_cheat1 ? 'T' : '@');
-  draw_setfb(0x08, DRAW_STATUS_Y);
-  draw_tile(game_cheat2 ? 'N' : '@');
-  draw_setfb(0x10, DRAW_STATUS_Y);
-  draw_tile(game_cheat3 ? 'V' : '@');
-}
-#endif
-
-
-/*
  * Clear status indicators
  */
 void
@@ -634,20 +607,7 @@ draw_sprite2(U8 number, U16 ux, U16 y, U8 front)
     im = x - (x & 0xfff8);
     flg = map_eflg[map_map[(y + r) >> 3][1 + (x + 0x1f)>> 3]];
 
-#ifdef ENABLE_CHEATS
-#define LOOP(N, C0, C1) \
-    d = sprites_data[number][g + N]; \
-    for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
-      if (im == 0) { \
-	flg = map_eflg[map_map[(y + r) >> 3][(x + c) >> 3]]; \
-	im = 8; \
-      } \
-      if (c >= w || x + c < x0) continue; \
-      if (!front && !game_cheat3 && (flg & MAP_EFLG_FGND)) continue; \
-      if (d & 0x0F) fb[i] = (fb[i] & 0xF0) | (d & 0x0F); \
-      if (game_cheat3) fb[i] |= 0x10; \
-    }
-#else
+
 #define LOOP(N, C0, C1) \
     d = sprites_data[number][g + N]; \
     for (c = C0; c >= C1; c--, i--, d >>= 4, im--) { \
@@ -659,7 +619,7 @@ draw_sprite2(U8 number, U16 ux, U16 y, U8 front)
       if (c >= w || x + c < x0) continue; \
       if (d & 0x0F) fb[i] = get_sys_palette_color((/*fb[i]*/ 1 & 0xF0) | (d & 0x0F)); \
     }
-#endif
+
     LOOP(3, 0x1f, 0x18);
     LOOP(2, 0x17, 0x10);
     LOOP(1, 0x0f, 0x08);

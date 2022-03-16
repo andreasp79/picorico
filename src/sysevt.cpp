@@ -143,17 +143,7 @@ static int processEvents()
       syssnd_vol(+1);
     }
 #endif
-#ifdef ENABLE_CHEATS
-    else if (key == SDLK_F7) {
-      game_toggleCheat(1);
-    }
-    else if (key == SDLK_F8) {
-      game_toggleCheat(2);
-    }
-    else if (key == SDLK_F9) {
-      game_toggleCheat(3);
-    }
-#endif
+
   //  break;
   //case SDL_KEYUP:
     //key = event.key.keysym.sym;

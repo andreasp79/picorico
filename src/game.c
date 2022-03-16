@@ -139,40 +139,6 @@ static void loaddata(void);
 static void freedata(void);
 
 
-/*
- * Cheats
- */
-#ifdef ENABLE_CHEATS
-void
-game_toggleCheat(U8 nbr)
-{
-  if (game_state != INTRO_MAIN && game_state != INTRO_MAP &&
-      game_state != GAMEOVER && game_state != GETNAME &&
-#ifdef ENABLE_DEVTOOLS
-      game_state != DEVTOOLS &&
-#endif
-      game_state != XRICK && game_state != EXIT) {
-    switch (nbr) {
-    case 1:
-      game_cheat1 = ~game_cheat1;
-      game_lives = 6;
-      game_bombs = 6;
-      game_bullets = 6;
-      break;
-    case 2:
-      game_cheat2 = ~game_cheat2;
-      break;
-    case 3:
-      game_cheat3 = ~game_cheat3;
-      break;
-    }
-    draw_infos();
-    /* FIXME this should probably only raise a flag ... */
-    /* plus we only need to update INFORECT not the whole screen */
-    sysvid_update(&draw_SCREENRECT);
-  }
-}
-#endif
 
 #ifdef ENABLE_SOUND
 /*
@@ -349,9 +315,7 @@ frame(void)
 			sysvid_clear();                 /* clear buffer */
 			draw_map();                     /* draw the map onto the buffer */
 			draw_drawStatus();              /* draw the status bar onto the buffer */
-#ifdef ENABLE_CHEATS
-			draw_infos();                   /* draw the info bar onto the buffer */
-#endif
+
 			game_rects = &draw_SCREENRECT;  /* request full buffer refresh */
 			game_state = PLAY0;
 			return;

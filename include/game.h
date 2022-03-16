@@ -66,13 +66,6 @@ extern void game_setmusic(char *name, U8 loop);
 extern void game_stopmusic(void);
 
 
-#ifdef ENABLE_CHEATS
-extern U8 game_cheat1;     /* infinite lives, bombs and bullets */
-extern U8 game_cheat2;     /* never die */
-extern U8 game_cheat3;     /* highlight sprites */
-extern void game_toggleCheat(U8);
-#endif
-
 #ifdef ENABLE_SOUND
 extern sound_t *WAV_GAMEOVER;
 extern sound_t *WAV_SBONUS2;

@@ -177,7 +177,7 @@ u_envtest(S16 x, S16 y, U8 crawl, U8 *rc0, U8 *rc1)
 
   /* When game_cheat2 is set, the environment can not be lethal. */
 #ifdef ENABLE_CHEATS
-  if (game_cheat2) *rc1 &= ~MAP_EFLG_LETHAL;
+  *rc1 &= ~MAP_EFLG_LETHAL;
 #endif
 }
 

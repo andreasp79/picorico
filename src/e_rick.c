@@ -84,9 +84,9 @@ e_rick_boxtest(U8 e)
 void
 e_rick_gozombie(void)
 {
-#ifdef ENABLE_CHEATS
-	if (game_cheat2) return;
-#endif
+	#ifdef ENABLE_CHEATS
+	return;
+	#endif
 
 	/* already zombie? */
 	if E_RICK_STTST(E_RICK_STZOMBIE) return;
@@ -301,10 +301,9 @@ e_rick_action2(void)
     /* else use a bullet, if any available */
     if (!game_bullets)
       return;
-#ifdef ENABLE_CHEATS
-    if (!game_cheat1)
-      game_bullets--;
-#endif
+
+    game_bullets--;
+
     /* initialize bullet */
     e_bullet_init(E_RICK_ENT.x, E_RICK_ENT.y);
     return;
@@ -320,10 +319,9 @@ e_rick_action2(void)
     /* else use a bomb, if any available */
     if (!game_bombs)
       return;
-#ifdef ENABLE_CHEATS
-    if (!game_cheat1)
+
       game_bombs--;
-#endif
+
     /* initialize bomb */
     e_bomb_init(E_RICK_ENT.x, E_RICK_ENT.y);
     return;
