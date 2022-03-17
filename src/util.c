@@ -22,6 +22,8 @@
 #include "e_rick.h"
 #include "maps.h"
 
+extern int cheats_enabled;
+
 /*
  * Full box test.
  *
@@ -177,7 +179,8 @@ u_envtest(S16 x, S16 y, U8 crawl, U8 *rc0, U8 *rc1)
 
   /* When game_cheat2 is set, the environment can not be lethal. */
 #ifdef ENABLE_CHEATS
-  *rc1 &= ~MAP_EFLG_LETHAL;
+  if (cheats_enabled)
+    *rc1 &= ~MAP_EFLG_LETHAL;
 #endif
 }
 

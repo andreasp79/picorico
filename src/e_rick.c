@@ -75,6 +75,7 @@ e_rick_boxtest(U8 e)
 
 
 
+extern int cheats_enabled;
 
 /*
  * Go zombie
@@ -85,7 +86,8 @@ void
 e_rick_gozombie(void)
 {
 	#ifdef ENABLE_CHEATS
-	return;
+	if (cheats_enabled)
+		return;
 	#endif
 
 	/* already zombie? */
@@ -436,7 +438,6 @@ e_rick_action2(void)
   }
 }
 
-
 /*
  * Action function for e_rick
  *
@@ -478,10 +479,12 @@ void e_rick_action(UNUSED(U8 e))
 
 	if E_RICK_STTST(E_RICK_STCLIMB) {
 		E_RICK_ENT.sprite = (((E_RICK_ENT.x ^ E_RICK_ENT.y) & 0x04) ? 0x18 : 0x0c);
-#ifdef ENABLE_SOUND
+//#ifdef ENABLE_SOUND
 		seq = (seq + 1) & 0x03;
-		if (seq == 0) syssnd_play(WAV_WALK, 1);
-#endif
+		if (seq == 0) 
+			PlayTuneSuperHigh();
+		//syssnd_play(WAV_WALK, 1);
+//#endif
 		return;
 	}
 

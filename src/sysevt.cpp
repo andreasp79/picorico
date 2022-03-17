@@ -30,6 +30,8 @@ extern "C"
 #include "control.h"
 #include "draw.h"
 
+int cheats_enabled = 0;
+
 extern void PlayTuneLow();
 
 #define SYSJOY_RANGE 3280
@@ -101,22 +103,22 @@ static int processEvents()
     }
     
      if (KeyXpWentDown) {
-      SETBIT(control_status, CONTROL_PAUSE);
-      control_last = CONTROL_PAUSE;
+      //SETBIT(control_status, CONTROL_PAUSE);
+      //control_last = CONTROL_PAUSE;
     }
     
      if (KeyYWentDown) {
-      SETBIT(control_status, CONTROL_END);
-      control_last = CONTROL_END;
+      //SETBIT(control_status, CONTROL_END);
+      //control_last = CONTROL_END;
     }
     
      if (KeyAWentDown) {
-      SETBIT(control_status, CONTROL_EXIT);
-      control_last = CONTROL_EXIT;
+      //SETBIT(control_status, CONTROL_EXIT);
+      //control_last = CONTROL_EXIT;
     }
     
      if (KeyBpWentDown) {
-      PlayTuneLow();
+      //PlayTuneLow();
       SETBIT(control_status, CONTROL_FIRE);
       control_last = CONTROL_FIRE;
     }
@@ -168,18 +170,21 @@ static int processEvents()
     }
     
      if (KeyXpWentUp) {
-      CLRBIT(control_status, CONTROL_PAUSE);
-      control_last = CONTROL_PAUSE;
+      //CLRBIT(control_status, CONTROL_PAUSE);
+      //control_last = CONTROL_PAUSE;
+      #ifdef ENABLE_CHEATS
+      cheats_enabled = !cheats_enabled;
+      #endif
     }
     
      if (KeyYWentUp) {
-      CLRBIT(control_status, CONTROL_END);
-      control_last = CONTROL_END;
+      //CLRBIT(control_status, CONTROL_END);
+      //control_last = CONTROL_END;
     }
     
      if (KeyAWentUp) {
-      CLRBIT(control_status, CONTROL_EXIT);
-      control_last = CONTROL_EXIT;
+      //CLRBIT(control_status, CONTROL_EXIT);
+      //control_last = CONTROL_EXIT;
     }
     
      if (KeyBpWentUp) {

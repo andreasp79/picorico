@@ -398,9 +398,7 @@ draw_sprite2(U8 number, U16 x, U16 y, U8 front)
 	 */
 	for (k = 8; k--; xm >>= 2, xp >>= 2) {
 	  f[k] = get_sys_palette_color( /*(xm & 3) |*/ (xp & 3));
-#ifdef ENABLE_CHEATS
-	  if (game_cheat3) f[k] |= 4;
-#endif
+
 	}
 
       }
