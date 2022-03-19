@@ -689,8 +689,7 @@ e_them_t3_action2(U8 e)
 		* FIXME is it 8 of them, not 10?
 		* FIXME testing below...
 		*/
-		syssnd_play(WAV_ENTITY[(ent_ents[e].trigsnd & 0x1F) - 0x14], 1);
-		/*syssnd_play(WAV_ENTITY[0], 1);*/
+		//syssnd_play(WAV_ENTITY[(ent_ents[e].trigsnd & 0x1F) - 0x14], 1);
 #endif
       ent_ents[e].n &= ~ENT_LETHAL;
       if (ent_ents[e].flags & ENT_FLG_LETHALI)

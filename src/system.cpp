@@ -123,7 +123,6 @@ sys_init()
 	sysjoy_init();
 #endif
 #ifdef ENABLE_SOUND
-	if (sysarg_args_nosound == 0)
 		syssnd_init();
 #endif
 	//atexit(sys_shutdown);

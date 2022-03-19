@@ -25,7 +25,7 @@
 #undef ENABLE_JOYSTICK
 
 /* sound support */
-#undef ENABLE_SOUND
+#define ENABLE_SOUND
 
 /* cheats support */
 #undef ENABLE_CHEATS

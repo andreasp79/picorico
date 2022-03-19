@@ -67,21 +67,21 @@ extern void game_stopmusic(void);
 
 
 #ifdef ENABLE_SOUND
-extern sound_t *WAV_GAMEOVER;
-extern sound_t *WAV_SBONUS2;
-extern sound_t *WAV_BULLET;
-extern sound_t *WAV_BOMBSHHT;
-extern sound_t *WAV_EXPLODE;
-extern sound_t *WAV_STICK;
-extern sound_t *WAV_WALK;
-extern sound_t *WAV_CRAWL;
-extern sound_t *WAV_JUMP;
-extern sound_t *WAV_PAD;
-extern sound_t *WAV_BOX;
-extern sound_t *WAV_BONUS;
-extern sound_t *WAV_SBONUS1;
-extern sound_t *WAV_DIE;
-extern sound_t *WAV_ENTITY[];
+#define WAV_GAMEOVER (1)
+#define WAV_SBONUS2  (2)
+#define WAV_BULLET  (3)
+#define WAV_BOMBSHHT (4)
+#define WAV_EXPLODE (5)
+#define WAV_STICK (6)
+#define WAV_WALK (7)
+#define WAV_CRAWL (8)
+#define WAV_JUMP (9)
+#define WAV_PAD (10)
+#define WAV_BOX (11)
+#define WAV_BONUS (12)
+#define WAV_SBONUS1 (13)
+#define WAV_DIE (14)
+//#define WAV_ENTITY[]=;
 #endif
 
 #endif

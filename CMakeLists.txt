@@ -46,6 +46,7 @@ set(PROJECT_SOURCES
     src/sysvid.cpp
     src/util.c
     src/xrick.c
+    src/syssnd.cpp
 )
 
 # --- Here Be Boilerplate ---

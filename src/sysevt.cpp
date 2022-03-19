@@ -134,17 +134,7 @@ static int processEvents()
      if (key == SDLK_F3) {
       sysvid_zoom(+1);
     }*/
-#ifdef ENABLE_SOUND
-    else if (key == SDLK_F4) {
-      syssnd_toggleMute();
-    }
-    else if (key == SDLK_F5) {
-      syssnd_vol(-1);
-    }
-    else if (key == SDLK_F6) {
-      syssnd_vol(+1);
-    }
-#endif
+
 
   //  break;
   //case SDL_KEYUP:
@@ -178,6 +168,7 @@ static int processEvents()
     }
     
      if (KeyYWentUp) {
+       syssnd_toggleMute();
       //CLRBIT(control_status, CONTROL_END);
       //control_last = CONTROL_END;
     }

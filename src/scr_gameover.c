@@ -34,7 +34,7 @@ screen_gameover(void)
 	static U32 tm = 0;
 #endif
 #ifdef ENABLE_SOUND
-	static sound_t *snd;
+	static int snd;
 	static U8 chan;
 #endif
 

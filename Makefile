@@ -2592,6 +2592,33 @@ src/syskbd.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syskbd.c.s
 .PHONY : src/syskbd.c.s
 
+src/syssnd.obj: src/syssnd.cpp.obj
+
+.PHONY : src/syssnd.obj
+
+# target to build an object file
+src/syssnd.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syssnd.cpp.obj
+.PHONY : src/syssnd.cpp.obj
+
+src/syssnd.i: src/syssnd.cpp.i
+
+.PHONY : src/syssnd.i
+
+# target to preprocess a source file
+src/syssnd.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syssnd.cpp.i
+.PHONY : src/syssnd.cpp.i
+
+src/syssnd.s: src/syssnd.cpp.s
+
+.PHONY : src/syssnd.s
+
+# target to generate assembly for a file
+src/syssnd.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/picorick.dir/build.make CMakeFiles/picorick.dir/src/syssnd.cpp.s
+.PHONY : src/syssnd.cpp.s
+
 src/system.obj: src/system.cpp.obj
 
 .PHONY : src/system.obj
@@ -2977,6 +3004,9 @@ help:
 	@echo "... src/syskbd.obj"
 	@echo "... src/syskbd.i"
 	@echo "... src/syskbd.s"
+	@echo "... src/syssnd.obj"
+	@echo "... src/syssnd.i"
+	@echo "... src/syssnd.s"
 	@echo "... src/system.obj"
 	@echo "... src/system.i"
 	@echo "... src/system.s"

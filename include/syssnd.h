@@ -29,12 +29,14 @@
 /* MIXSAMPLES: ?? at 22050Hz */
 #define SYSSND_MIXSAMPLES 1024
 
+/*
 typedef struct {
-	sound_t *snd;
+	int snd;
 	U8 *buf;
 	U32 len;
 	S8 loop;
 } channel_t;
+*/
 
 #endif /* ENABLE_SOUND */
 
