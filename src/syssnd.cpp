@@ -29,8 +29,8 @@ extern "C"
 #include "syssnd.h"
 #include "debug.h"
 
-picosystem::voice_t v_Walk;
-
+picosystem::voice_t v_Beep;
+picosystem::voice_t v_Jump;
 
 extern void PlayTuneSuperHigh();
 
@@ -58,7 +58,19 @@ end_channel(U8 c)
 void
 syssnd_init(void)
 {
-  v_Walk = picosystem::voice(
+  v_Jump = picosystem::voice(
+    550,
+    0,
+    80,
+    400,
+    0,
+    100,
+    0,
+    0
+
+  );
+
+  v_Beep = picosystem::voice(
     200,
     0,
     0,
@@ -111,7 +123,7 @@ syssnd_vol(S8 d)
 S8
 syssnd_play(int sound, S8 loop)
 {
-  if (sndMute == FALSE)
+  if (sndMute == TRUE)
     return 0;
 
   if (sound == 1)
@@ -121,22 +133,20 @@ syssnd_play(int sound, S8 loop)
   switch(sound)
   {
     case WAV_WALK:
-      picosystem::play(v_Walk, 6000, 500, 100);
+      picosystem::play(v_Beep, 100, 50, 100);
       break;
 
     case WAV_JUMP:
-       PlayTuneSuperHigh();
+       picosystem::play(v_Jump, 300, 400, 100);
       break;
 
 
       case WAV_CRAWL:
-      PlayTuneSuperHigh();
-      break;
-
-      case 9999999:
-      //PlayTuneSuperHigh();
+      picosystem::play(v_Beep, 120, 50, 100);
       break;
   }
+
+  return 0;
 }
 
 /*
